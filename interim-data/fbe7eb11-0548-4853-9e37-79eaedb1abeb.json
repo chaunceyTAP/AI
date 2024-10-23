@@ -1,0 +1,186 @@
+{
+    "guid": "fbe7eb11-0548-4853-9e37-79eaedb1abeb",
+    "title": "Configure access to Microsoft SQL Server",
+    "path": "help\\installation\\using\\configure-fda-sql.md",
+    "fullText": "---\nproduct: campaign\ntitle: Configure access to Microsoft SQL Server\ndescription: Learn how to configure access to Microsoft SQL Server\nfeature: Installation, Federated Data Access\nexl-id: 65ab4577-3126-4579-8fcc-e93772ebd1e8\n---\n# Configure access to Microsoft SQL Server {#configure-fda-sql}\n\n\n\nUse Campaign **Federated Data Access** (FDA) option to process information stored in an external Microsoft SQL Server database. Follow the steps below to configure access to [!DNL Microsoft SQL Server].\n\n1. Configure [!DNL Microsoft SQL Server] on [CentOS](#sql-centos).\n1. Configure [!DNL Microsoft SQL Server] on [Linux](#sql-linux).\n1. Configure [!DNL Microsoft SQL Server] on [Windows](#sql-windows).\n1. Configure the [!DNL Microsoft SQL Server] [external account](#sql-external) in Campaign\n\n## Microsoft SQL Server on CentOS {#sql-centos}\n\n>[!NOTE]\n>\n> [!DNL Microsoft SQL Server] is available on CentOS 7 and 6.\n\nTo configure [!DNL Microsoft SQL Server] on CentOS, follow the steps below:\n\n1. Download and install SQL ODBC driver with the following command:\n\n    ``` \n    sudo su\n    curl https://packages.microsoft.com/config/rhel/7/prod.repo > /etc/yum.repos.d/mssql-release.repo\n    exit\n    sudo yum remove unixODBC-utf16 unixODBC-utf16-devel #to avoid conflicts\n    sudo ACCEPT_EULA=Y yum install msodbcsql\n    ``` \n\n1. In Adobe Campaign, you can then configure your [!DNL Microsoft SQL Server] external account. For more on how to configure your external account, refer to [this section](#sql-external).\n\n## Microsoft SQL Server on Linux {#sql-linux}\n\n>[!NOTE]\n>\n> If you are running an older version of Adobe Campaign (prior to 7.2.1), you need to install `unix ODBC drivers`.\n\n1. Download the MS ODBC driver from [this page](https://packages.microsoft.com/ubuntu/16.04/prod/pool/main/m/msodbcsql17/).\n\n1. Run the following command as root user:\n\n    ``` \n    # install the mssql odbc that was downloaded\n    dpkg -i msodbcsql17_17.7.1.1-1_amd64.deb\n    # accept the license terms\n    ``` \n\n1. In Adobe Campaign, you can then configure your [!DNL Microsoft SQL Server] external account. For more on how to configure your external account, refer to [this section](#sql-external).\n\n## Microsoft SQL Server on Windows {#sql-windows}\n\nTo configure [!DNL Microsoft SQL Server] on Windows:\n\n1. In Windows, click **[!UICONTROL Control Panel]** '>' **[!UICONTROL System and Security]** '>' **[!UICONTROL Administrative Tools]**'>' **[!UICONTROL ODBC Data Sources (64-bit)]**.\n\n1. From the **[!UICONTROL ODBC Data Sources (64-bit)]** new window, click **[!UICONTROL Add...]**.\n\n1. Check if SQL Server Native Client v11 is listed in the **[!UICONTROL Create New Data Source]** window.\n\n1. If the SQL Server Native Client is not listed, you can download it in [this page](https://www.microsoft.com/en-my/download/details.aspx?id=36434).\n\n1. In Adobe Campaign, you can then configure your [!DNL Microsoft SQL Server] external account. For more on how to configure your external account, refer to [this section](#sql-external).\n\n## Microsoft SQL Server external account {#sql-external}\n\nYou need to create a [!DNL Microsoft SQL Server] external account to connect your Campaign instance to your [!DNL Microsoft SQL Server] external database.\n\n1. From Campaign **[!UICONTROL Explorer]**, click **[!UICONTROL Administration]** '>' **[!UICONTROL Platform]** '>' **[!UICONTROL External accounts]**.\n\n1. Click **[!UICONTROL New]**.\n\n1. Select **[!UICONTROL External database]** as your external account's **[!UICONTROL Type]**.\n\n1. Under **[!UICONTROL Configuration]**, select [!DNL Microsoft SQL Server] from the **[!UICONTROL Type]** drop-down.\n\n    ![](assets/sql.png)\n\n1. Configure the **[!UICONTROL Microsoft SQL Server]** external account authentication:\n\n    * **[!UICONTROL Server]**: URL of the [!DNL Microsoft SQL Server] server.\n\n    * **[!UICONTROL Account]**: Name of the user.\n\n    * **[!UICONTROL Password]**: User account password.\n\n    * **[!UICONTROL Database]**: Name of the database (optional).\n\n    * **[!UICONTROL Timezone]**: Timezone set in [!DNL Microsoft SQL Server]. [Learn more](https://docs.microsoft.com/en-us/sql/t-sql/functions/current-timezone-transact-sql?view=sql-server-ver15)\n\n1. Click the **[!UICONTROL Parameters]** tab then the **[!UICONTROL Deploy functions]** button to create functions.\n\n    >[!NOTE]\n    >\n    >For all functions to be available, you need to create the Adobe Campaign SQL functions in the remote database. For more information, refer to this [page](../../configuration/using/adding-additional-sql-functions.md).\n\n1. Click **[!UICONTROL Save]** when your configuration is finished.\n\nThe connector supports the following options:\n\n| Option   |  Description |\n|---|---|\n|  Authentication | Type of authentication supported by the connector. Current supported value: ActiveDirectoryMSI. <br> For more on this, refer to example 8 of [Microsoft documentation](https://docs.microsoft.com/en-us/sql/connect/odbc/using-azure-active-directory?view=sql-server-ver15#example-connection-strings).|\n|  Encrypt |  Specifies whether connections use the TLS encryption over the network. Possible values are **yes/mandatory (18.0 and later)**, **no/optional (18.0 and later)**, and **strict (18.0 and later)**. The default value is set to **yes** in version 18.0 and later and **no** in previous versions. <br>For more on this, refer to [Microsoft documentation](https://docs.microsoft.com/en-us/sql/connect/odbc/dsn-connection-string-attribute?view=azure-sqldw-latest#encrypt). |\n|  TrustServerCertificate | Enables encryption using a self-signed server certificate, when used with **Encrypt**. <br>Accepted values: **yes** or **no** (default value, which means that the server certificate will be validated).|\n",
+    "headers": [
+        [
+            "title",
+            "Configure access to Microsoft SQL Server"
+        ],
+        [
+            "description",
+            "Learn how to configure access to Microsoft SQL Server"
+        ],
+        [
+            "feature",
+            "Installation, Federated Data Access"
+        ]
+    ],
+    "sections": [
+        {
+            "section": "Configure access to Microsoft SQL Server",
+            "sectionId": "0e0e52ff-41a4-418d-817b-9a7c3dc399c6",
+            "paragraphs": [
+                "Use Campaign Federated Data Access (FDA) option to process information stored in an external Microsoft SQL Server database. Follow the steps below to configure access to DNL Microsoft SQL Server.",
+                "Configure DNL Microsoft SQL Server on CentOS.\nConfigure DNL Microsoft SQL Server on Linux.\nConfigure DNL Microsoft SQL Server on Windows.\nConfigure the DNL Microsoft SQL Server external account in Campaign"
+            ]
+        },
+        {
+            "section": "Microsoft SQL Server on CentOS",
+            "sectionId": "5c1b23af-537b-4032-9d40-78d91853bd19",
+            "paragraphs": [
+                "NOTE",
+                "DNL Microsoft SQL Server is available on CentOS 7 and 6.",
+                "To configure DNL Microsoft SQL Server on CentOS, follow the steps below:",
+                "Download and install SQL ODBC driver with the following command:",
+                "sudo su\ncurl https://packages.microsoft.com/config/rhel/7/prod.repo > /etc/yum.repos.d/mssql-release.repo\nexit\nsudo yum remove unixODBC-utf16 unixODBC-utf16-devel #to avoid conflicts\nsudo ACCEPT_EULA=Y yum install msodbcsql",
+                "In Adobe Campaign, you can then configure your DNL Microsoft SQL Server external account. For more on how to configure your external account, refer to this section."
+            ]
+        },
+        {
+            "section": "Microsoft SQL Server on Linux",
+            "sectionId": "a5bc6c68-ff94-412d-8f0c-302aff2b2f7e",
+            "paragraphs": [
+                "NOTE",
+                "If you are running an older version of Adobe Campaign (prior to 7.2.1), you need to install unix ODBC drivers.",
+                "Download the MS ODBC driver from this page.",
+                "Run the following command as root user:",
+                "# install the mssql odbc that was downloaded\ndpkg -i msodbcsql17_17.7.1.1-1_amd64.deb\n# accept the license terms",
+                "In Adobe Campaign, you can then configure your DNL Microsoft SQL Server external account. For more on how to configure your external account, refer to this section.",
+                "Microsoft SQL Server on Windows",
+                "To configure DNL Microsoft SQL Server on Windows:",
+                "In Windows, click Control Panel '>' System and Security '>' Administrative Tools'>' ODBC Data Sources (64-bit).",
+                "From the ODBC Data Sources (64-bit) new window, click Add....",
+                "Check if SQL Server Native Client v11 is listed in the Create New Data Source window.",
+                "If the SQL Server Native Client is not listed, you can download it in this page.",
+                "In Adobe Campaign, you can then configure your DNL Microsoft SQL Server external account. For more on how to configure your external account, refer to this section.",
+                "Microsoft SQL Server external account",
+                "You need to create a DNL Microsoft SQL Server] external account to connect your Campaign instance to your [!DNL Microsoft SQL Server external database.",
+                "From Campaign Explorer, click Administration '>' Platform '>' External accounts.",
+                "Click New.",
+                "Select External database as your external account's Type.",
+                "Under Configuration, select DNL Microsoft SQL Server from the Type drop-down.",
+                "",
+                "Configure the Microsoft SQL Server external account authentication:",
+                "Server: URL of the DNL Microsoft SQL Server server.",
+                "Account: Name of the user.",
+                "Password: User account password.",
+                "Database: Name of the database (optional).",
+                "Timezone: Timezone set in DNL Microsoft SQL Server. Learn more",
+                "Click the Parameters tab then the Deploy functions button to create functions.",
+                "NOTE",
+                "For all functions to be available, you need to create the Adobe Campaign SQL functions in the remote database. For more information, refer to this page.",
+                "Click Save when your configuration is finished.",
+                "The connector supports the following options:"
+            ]
+        },
+        {
+            "section": "install the mssql odbc that was downloaded",
+            "sectionId": "fdeda362-c96e-49d3-9183-b548568d9c48",
+            "paragraphs": [
+                "Configure access to Microsoft SQL Server",
+                "Use Campaign Federated Data Access (FDA) option to process information stored in an external Microsoft SQL Server database. Follow the steps below to configure access to DNL Microsoft SQL Server.",
+                "Configure DNL Microsoft SQL Server on CentOS.\nConfigure DNL Microsoft SQL Server on Linux.\nConfigure DNL Microsoft SQL Server on Windows.\nConfigure the DNL Microsoft SQL Server external account in Campaign",
+                "Microsoft SQL Server on CentOS",
+                "NOTE",
+                "DNL Microsoft SQL Server is available on CentOS 7 and 6.",
+                "To configure DNL Microsoft SQL Server on CentOS, follow the steps below:",
+                "Download and install SQL ODBC driver with the following command:",
+                "sudo su\ncurl https://packages.microsoft.com/config/rhel/7/prod.repo > /etc/yum.repos.d/mssql-release.repo\nexit\nsudo yum remove unixODBC-utf16 unixODBC-utf16-devel #to avoid conflicts\nsudo ACCEPT_EULA=Y yum install msodbcsql",
+                "In Adobe Campaign, you can then configure your DNL Microsoft SQL Server external account. For more on how to configure your external account, refer to this section.",
+                "Microsoft SQL Server on Linux",
+                "NOTE",
+                "If you are running an older version of Adobe Campaign (prior to 7.2.1), you need to install unix ODBC drivers.",
+                "Download the MS ODBC driver from this page.",
+                "Run the following command as root user:",
+                "# install the mssql odbc that was downloaded\ndpkg -i msodbcsql17_17.7.1.1-1_amd64.deb\n# accept the license terms",
+                "In Adobe Campaign, you can then configure your DNL Microsoft SQL Server external account. For more on how to configure your external account, refer to this section.",
+                "Microsoft SQL Server on Windows",
+                "To configure DNL Microsoft SQL Server on Windows:",
+                "In Windows, click Control Panel '>' System and Security '>' Administrative Tools'>' ODBC Data Sources (64-bit).",
+                "From the ODBC Data Sources (64-bit) new window, click Add....",
+                "Check if SQL Server Native Client v11 is listed in the Create New Data Source window.",
+                "If the SQL Server Native Client is not listed, you can download it in this page.",
+                "In Adobe Campaign, you can then configure your DNL Microsoft SQL Server external account. For more on how to configure your external account, refer to this section.",
+                "Microsoft SQL Server external account",
+                "You need to create a DNL Microsoft SQL Server] external account to connect your Campaign instance to your [!DNL Microsoft SQL Server external database.",
+                "From Campaign Explorer, click Administration '>' Platform '>' External accounts.",
+                "Click New.",
+                "Select External database as your external account's Type.",
+                "Under Configuration, select DNL Microsoft SQL Server from the Type drop-down.",
+                "",
+                "Configure the Microsoft SQL Server external account authentication:",
+                "Server: URL of the DNL Microsoft SQL Server server.",
+                "Account: Name of the user.",
+                "Password: User account password.",
+                "Database: Name of the database (optional).",
+                "Timezone: Timezone set in DNL Microsoft SQL Server. Learn more",
+                "Click the Parameters tab then the Deploy functions button to create functions.",
+                "NOTE",
+                "For all functions to be available, you need to create the Adobe Campaign SQL functions in the remote database. For more information, refer to this page.",
+                "Click Save when your configuration is finished.",
+                "The connector supports the following options:"
+            ]
+        },
+        {
+            "section": "accept the license terms",
+            "sectionId": "86dcd606-d1c1-4a75-8a3f-797abcd95f51",
+            "paragraphs": [
+                "Configure access to Microsoft SQL Server",
+                "Use Campaign Federated Data Access (FDA) option to process information stored in an external Microsoft SQL Server database. Follow the steps below to configure access to DNL Microsoft SQL Server.",
+                "Configure DNL Microsoft SQL Server on CentOS.\nConfigure DNL Microsoft SQL Server on Linux.\nConfigure DNL Microsoft SQL Server on Windows.\nConfigure the DNL Microsoft SQL Server external account in Campaign",
+                "Microsoft SQL Server on CentOS",
+                "NOTE",
+                "DNL Microsoft SQL Server is available on CentOS 7 and 6.",
+                "To configure DNL Microsoft SQL Server on CentOS, follow the steps below:",
+                "Download and install SQL ODBC driver with the following command:",
+                "sudo su\ncurl https://packages.microsoft.com/config/rhel/7/prod.repo > /etc/yum.repos.d/mssql-release.repo\nexit\nsudo yum remove unixODBC-utf16 unixODBC-utf16-devel #to avoid conflicts\nsudo ACCEPT_EULA=Y yum install msodbcsql",
+                "In Adobe Campaign, you can then configure your DNL Microsoft SQL Server external account. For more on how to configure your external account, refer to this section.",
+                "Microsoft SQL Server on Linux",
+                "NOTE",
+                "If you are running an older version of Adobe Campaign (prior to 7.2.1), you need to install unix ODBC drivers.",
+                "Download the MS ODBC driver from this page.",
+                "Run the following command as root user:",
+                "# install the mssql odbc that was downloaded\ndpkg -i msodbcsql17_17.7.1.1-1_amd64.deb\n# accept the license terms",
+                "In Adobe Campaign, you can then configure your DNL Microsoft SQL Server external account. For more on how to configure your external account, refer to this section."
+            ]
+        },
+        {
+            "section": "Microsoft SQL Server on Windows",
+            "sectionId": "e389ebeb-583c-4022-92d3-53b3fb66b561",
+            "paragraphs": [
+                "To configure DNL Microsoft SQL Server on Windows:",
+                "In Windows, click Control Panel '>' System and Security '>' Administrative Tools'>' ODBC Data Sources (64-bit).",
+                "From the ODBC Data Sources (64-bit) new window, click Add....",
+                "Check if SQL Server Native Client v11 is listed in the Create New Data Source window.",
+                "If the SQL Server Native Client is not listed, you can download it in this page.",
+                "In Adobe Campaign, you can then configure your DNL Microsoft SQL Server external account. For more on how to configure your external account, refer to this section."
+            ]
+        },
+        {
+            "section": "Microsoft SQL Server external account",
+            "sectionId": "bb70e2c2-5b4d-4381-a950-5a7469cc66c9",
+            "paragraphs": [
+                "You need to create a DNL Microsoft SQL Server] external account to connect your Campaign instance to your [!DNL Microsoft SQL Server external database.",
+                "From Campaign Explorer, click Administration '>' Platform '>' External accounts.",
+                "Click New.",
+                "Select External database as your external account's Type.",
+                "Under Configuration, select DNL Microsoft SQL Server from the Type drop-down.",
+                "",
+                "Configure the Microsoft SQL Server external account authentication:",
+                "Server: URL of the DNL Microsoft SQL Server server.",
+                "Account: Name of the user.",
+                "Password: User account password.",
+                "Database: Name of the database (optional).",
+                "Timezone: Timezone set in DNL Microsoft SQL Server. Learn more",
+                "Click the Parameters tab then the Deploy functions button to create functions.",
+                "NOTE",
+                "For all functions to be available, you need to create the Adobe Campaign SQL functions in the remote database. For more information, refer to this page.",
+                "Click Save when your configuration is finished.",
+                "The connector supports the following options:",
+                "Option Description\nAuthentication Type of authentication supported by the connector. Current supported value: ActiveDirectoryMSI.  For more on this, refer to example 8 of Microsoft documentation.\nEncrypt Specifies whether connections use the TLS encryption over the network. Possible values are yes/mandatory (18.0 and later), no/optional (18.0 and later), and strict (18.0 and later). The default value is set to yes in version 18.0 and later and no in previous versions. For more on this, refer to Microsoft documentation.\nTrustServerCertificate Enables encryption using a self-signed server certificate, when used with Encrypt. Accepted values: yes or no (default value, which means that the server certificate will be validated)."
+            ]
+        }
+    ]
+}

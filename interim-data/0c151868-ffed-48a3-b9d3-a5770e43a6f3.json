@@ -1,0 +1,94 @@
+{
+  "guid": "0c151868-ffed-48a3-b9d3-a5770e43a6f3",
+  "title": "Steps to create a query",
+  "path": "help\\platform\\using\\steps-to-create-a-query.md",
+  "fullText": "---\nproduct: campaign\ntitle: Steps to create a query\ndescription: Steps to create a query\nfeature: Query Editor\nbadge-v8: label=\"Also applies to v8\" type=\"Positive\" tooltip=\"Also applies to Campaign v8\"\naudience: platform\ncontent-type: reference\ntopic-tags: creating-queries\nexl-id: cf914366-8bac-4d68-a0cc-2a43d102eef2\n---\n# Steps to create a query{#steps-to-create-a-query}\n\n \n\nThe steps for building a query in Adobe Campaign are as follows:\n\n1. Select the work table. Refer to [Step 1 - Choose a table](#step-1---choose-a-table).\n1. Select the data to extract. Refer to [Step 2 - Choose data to extract](#step-2---choose-data-to-extract).\n1. Define the data sorting sequence. Refer to [Step 3 - Sort data](#step-3---sort-data).\n1. Filter the data. Refer to [Step 4 - Filter data](#step-4---filter-data).\n1. Format the data. Refer to [Step 5 - Format data](#step-5---format-data).\n1. Display the result. Refer to [Step 6 - Preview data](#step-6---preview-data).\n\n>[!NOTE]\n>\n>All these steps are available in the generic query editor. When a query is created in another context, some steps can be left out.  \n>The Query activity is presented in [this section](../../workflow/using/query.md).\n\n## Step 1 - Choose a table {#step-1---choose-a-table}\n\nSelect the table containing the data you want to query in the **[!UICONTROL Document type]** window. If necessary, filter the data using the filter field or the **[!UICONTROL Filters]** button.\n\n![](assets/query_editor_nveau_21.png)\n\n## Step 2 - Choose data to extract {#step-2---choose-data-to-extract}\n\nIn the **[!UICONTROL Data to extract]** window, select the data to display: these fields will make up the output columns.\n\nFor example, select **[!UICONTROL Age]**, **[!UICONTROL Primary key]**, **[!UICONTROL Email domain]** and **[!UICONTROL City]**. The results will be organized based on this selection. Use the blue arrows to the right of the window to change the column order.\n\n![](assets/query_editor_nveau_01.png)\n\nYou can edit an expression by inserting a formula into it or running a process on an aggregate function. To do this, click the **[!UICONTROL Expression]** column field, then select **[!UICONTROL Edit expression]**.\n\n![](assets/query_editor_nveau_97.png)\n\nIt is possible to group output column data: to do this, check **[!UICONTROL Yes]** in the **[!UICONTROL Group]** column of the **[!UICONTROL Data to extract]** window. This function generates a result around the checked grouping axis. An example of a query with grouping is available in [this section](../../workflow/using/querying-delivery-information.md).\n\n![](assets/query_editor_nveau_56.png)\n\n* The **[!UICONTROL Handle groupings (GROUP BY + HAVING)]** function lets you \"group by\" and select what has been grouped (\"having\"). This function applies to all fields in the output column. For example, this option lets you group all choices of an output column and recover a specific type of information, such as recipients between 35 and 50.\n\n  For more on this, refer to [this section](../../workflow/using/querying-using-grouping-management.md).\n\n* The **[!UICONTROL Remove duplicate rows (DISTINCT)]** function lets you deduplicate identical results obtained in the output column. For example, if you take a census by selecting the Last name, First name and Email fields in the output column, those with identical data will be eliminated, since it means the same contact has been entered several times in the database: only one result will be taken into account.\n\n## Step 3 - Sort data {#step-3---sort-data}\n\nThe **[!UICONTROL Sorting]** window lets you sort column content. Use the arrows to change the column order:\n\n* The **[!UICONTROL Sorting]** column enables a simple sort and arranges column content from A to Z or in ascending order.\n* The **[!UICONTROL Descending sort]** arranges the content from Z to A and in descending order. This is useful for viewing record sales for example: the highest figures are shown at the top of the list.\n\nIn this example, the data is sorted in ascending order based on recipient age.\n\n![](assets/query_editor_nveau_57.png)\n\n## Step 4 - Filter data {#step-4---filter-data}\n\nThe query editor lets you filter data to refine your search.\n\nThe filters offered depend on the table which the query concerns.\n\n![](assets/query_editor_nveau_09.png)\n\nOnce you select the **[!UICONTROL Filtering conditions]** you will access the **[!UICONTROL Target elements]** section: this lets you define how to filter the data to collect.\n\n* To create a new filter, select the fields, operators and values required for creating the formula to be verified in order for data to be selected. It's possible to combine several conditions (for more on this, refer to [Defining filter conditions](../../platform/using/defining-filter-conditions.md)).\n* To use previously saved filters, open the drop-down list by clicking the **[!UICONTROL Add]** button, click **[!UICONTROL Predefined filter]** and select the one you want.\n\n  ![](assets/query_editor_15.png)\n\n* The filters created in the **[!UICONTROL Generic query editor]** are available in other query applications and vice versa. To save a filter, click the **[!UICONTROL Save]** icon.\n\n  >[!NOTE]\n  >\n  >For more on creating and using filters, refer to [Filtering options](../../platform/using/filtering-options.md).\n\nAs shown in the following example, to recover all English-speaking recipients, select: \"recipient language **equal to** EN\".\n\n![](assets/query_editor_nveau_89.png)\n\n>[!NOTE]\n>\n>You can directly access an option by typing the following formula in the **Value** field: **$(options:OPTION_NAME)**.\n\nClick the **[!UICONTROL Preview]** tab to view the result of the filtering condition. In this case, all English-speaking recipients are displayed with their name, first name and email address.\n\n![](assets/query_editor_nveau_98.png)\n\nUsers familiar with SQL language can click **[!UICONTROL Generate SQL query]** to view the query in SQL.\n\n![](assets/query_editor_nveau_99.png)\n\n## Step 5 - Format data {#step-5---format-data}\n\nOnce you have configured the restriction filters, you will access the **[!UICONTROL Data formatting]** window. This window lets you re-arrange output columns, transform data, and change the upper/lower case of the column labels. It also lets you apply a formula to the final result using a calculated field.\n\n>[!NOTE]\n>\n>For more information on the types of calculated fields, refer to [Creating calculated fields](../../platform/using/defining-filter-conditions.md#creating-calculated-fields).\n\nUnchecked columns will not be shown in the data preview window.\n\n![](assets/query_editor_nveau_10.png)\n\nThe **[!UICONTROL Transformation]** column lets you change a column label to upper or lower case. Select the column and click in the **[!UICONTROL Transformation]** column. You can choose:\n\n* **[!UICONTROL Switch to lower case]**,\n* **[!UICONTROL Switch to upper case]**, \n* **[!UICONTROL First letter in upper case]**.\n\n![](assets/query_editor_nveau_42.png)\n\n## Step 6 - Preview data {#step-6---preview-data}\n\nThe **[!UICONTROL Data preview]** window is the last stage. Click **[!UICONTROL Start the preview of the data]** to get your query result. It is available in columns or in XML format. Click the **[!UICONTROL Generated SQL queries]** tab to view the query in SQL format.\n\nIn this example, data is sorted in ascending order based on recipient age.\n\n![](assets/query_editor_nveau_11.png)\n\n>[!NOTE]\n>\n>By default, only the first 200 lines are displayed in the **[!UICONTROL Data preview]** window. To change this, enter a number in the **[!UICONTROL Lines to display]** box and click **[!UICONTROL Start the preview of the data]**.\n",
+  "headers": [
+    ["title", "Steps to create a query"],
+    ["description", "Steps to create a query"],
+    ["feature", "Query Editor"],
+    ["topic-tags", "creating-queries"]
+  ],
+  "sections": [
+    {
+      "section": "Steps to create a query",
+      "sectionId": "9880b937-92ac-499a-bdc8-c9b0f3097ce5",
+      "paragraphs": [
+        "The steps for building a query in Adobe Campaign are as follows:",
+        "Select the work table. Refer to Step 1 - Choose a table.\nSelect the data to extract. Refer to Step 2 - Choose data to extract.\nDefine the data sorting sequence. Refer to Step 3 - Sort data.\nFilter the data. Refer to Step 4 - Filter data.\nFormat the data. Refer to Step 5 - Format data.\nDisplay the result. Refer to Step 6 - Preview data.",
+        "NOTE",
+        "All these steps are available in the generic query editor. When a query is created in another context, some steps can be left out.\nThe Query activity is presented in this section."
+      ]
+    },
+    {
+      "section": "Step 1 - Choose a table",
+      "sectionId": "0ea1f352-734c-4ddf-aee5-0410c8208d02",
+      "paragraphs": [
+        "Select the table containing the data you want to query in the Document type window. If necessary, filter the data using the filter field or the Filters button."
+      ]
+    },
+    {
+      "section": "Step 2 - Choose data to extract",
+      "sectionId": "7def3541-9bdb-4f6c-91a3-78492dfb7942",
+      "paragraphs": [
+        "In the Data to extract window, select the data to display: these fields will make up the output columns.",
+        "For example, select Age, Primary key, Email domain and City. The results will be organized based on this selection. Use the blue arrows to the right of the window to change the column order.",
+        "You can edit an expression by inserting a formula into it or running a process on an aggregate function. To do this, click the Expression column field, then select Edit expression.",
+        "It is possible to group output column data: to do this, check Yes in the Group column of the Data to extract window. This function generates a result around the checked grouping axis. An example of a query with grouping is available in this section.",
+        "The Handle groupings (GROUP BY + HAVING) function lets you \"group by\" and select what has been grouped (\"having\"). This function applies to all fields in the output column. For example, this option lets you group all choices of an output column and recover a specific type of information, such as recipients between 35 and 50.",
+        "For more on this, refer to this section.",
+        "The Remove duplicate rows (DISTINCT) function lets you deduplicate identical results obtained in the output column. For example, if you take a census by selecting the Last name, First name and Email fields in the output column, those with identical data will be eliminated, since it means the same contact has been entered several times in the database: only one result will be taken into account."
+      ]
+    },
+    {
+      "section": "Step 3 - Sort data",
+      "sectionId": "09457f4f-46de-401d-becb-07d0dfa86ee8",
+      "paragraphs": [
+        "The Sorting window lets you sort column content. Use the arrows to change the column order:",
+        "The Sorting column enables a simple sort and arranges column content from A to Z or in ascending order.\nThe Descending sort arranges the content from Z to A and in descending order. This is useful for viewing record sales for example: the highest figures are shown at the top of the list.",
+        "In this example, the data is sorted in ascending order based on recipient age."
+      ]
+    },
+    {
+      "section": "Step 4 - Filter data",
+      "sectionId": "122a1fa9-35ba-4385-861f-d2acc565d6ab",
+      "paragraphs": [
+        "The query editor lets you filter data to refine your search.",
+        "The filters offered depend on the table which the query concerns.",
+        "Once you select the Filtering conditions you will access the Target elements section: this lets you define how to filter the data to collect.",
+        "To create a new filter, select the fields, operators and values required for creating the formula to be verified in order for data to be selected. It's possible to combine several conditions (for more on this, refer to Defining filter conditions).",
+        "To use previously saved filters, open the drop-down list by clicking the Add button, click Predefined filter and select the one you want.",
+        "The filters created in the Generic query editor are available in other query applications and vice versa. To save a filter, click the Save icon.",
+        "NOTE",
+        "For more on creating and using filters, refer to Filtering options.",
+        "As shown in the following example, to recover all English-speaking recipients, select: \"recipient language equal to EN\".",
+        "NOTE",
+        "You can directly access an option by typing the following formula in the Value field: $(options:OPTION_NAME).",
+        "Click the Preview tab to view the result of the filtering condition. In this case, all English-speaking recipients are displayed with their name, first name and email address.",
+        "Users familiar with SQL language can click Generate SQL query to view the query in SQL."
+      ]
+    },
+    {
+      "section": "Step 5 - Format data",
+      "sectionId": "ec156a71-8529-474e-b44e-bee065cc48c8",
+      "paragraphs": [
+        "Once you have configured the restriction filters, you will access the Data formatting window. This window lets you re-arrange output columns, transform data, and change the upper/lower case of the column labels. It also lets you apply a formula to the final result using a calculated field.",
+        "NOTE",
+        "For more information on the types of calculated fields, refer to Creating calculated fields.",
+        "Unchecked columns will not be shown in the data preview window.",
+        "The Transformation column lets you change a column label to upper or lower case. Select the column and click in the Transformation column. You can choose:",
+        "Switch to lower case,\nSwitch to upper case, \nFirst letter in upper case."
+      ]
+    },
+    {
+      "section": "Step 6 - Preview data",
+      "sectionId": "39a622e0-f49f-4632-bb12-4d431e9f9510",
+      "paragraphs": [
+        "The Data preview window is the last stage. Click Start the preview of the data to get your query result. It is available in columns or in XML format. Click the Generated SQL queries tab to view the query in SQL format.",
+        "In this example, data is sorted in ascending order based on recipient age.",
+        "NOTE",
+        "By default, only the first 200 lines are displayed in the Data preview window. To change this, enter a number in the Lines to display box and click Start the preview of the data."
+      ]
+    }
+  ]
+}

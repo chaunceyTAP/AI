@@ -1,0 +1,39 @@
+{
+    "guid": "fee124fb-14e9-4a1a-8c38-9d6a215b1ee8",
+    "title": "Quarterly list update using an incremental query",
+    "path": "help\\workflow\\using\\quarterly-list-update.md",
+    "fullText": "---\nproduct: campaign\ntitle: Quarterly list update using an incremental query\ndescription: In this use case, an incremental query is used to automatically update a recipient list\nfeature: Workflows\nexl-id: 0d3e7046-313a-42a6-9155-3365e8d60bac\n---\n# Quarterly list update using an incremental query {#quarterly-list-update}\n\n\n\nIn the following example, an [incremental query](incremental-query.md) is used to automatically update a recipient list. These recipients are targeted as part of seasonal marketing campaigns.\n\nAs these campaigns are launched at the beginning of every season in order to offer relevant sports activities, these lists are updated every quarter. However, a recipient here must only be targeted once every 9 months by this campaign. This allows you to space out the recipient's eligibility frequency and to offer activities for different seasons over the years.\n\n![](assets/incremental_query_example.png)\n\n1. Add an incremental query as well as a list update activity into a new workflow.\n1. Configure the **[!UICONTROL Incremental query]** tab of the activity as specified in [Create a query](query.md#creating-a-query).\n1. Select the **[!UICONTROL Scheduling & History]** tab and then specify a 270-day history. A recipient that has already been targeted will no longer be targeted for a period of 270 days, or roughly 9 months.\n\n   Then click the **[!UICONTROL Change...]** button.\n\n1. To ensure the list is updated before the start of each season, select **[!UICONTROL Monthly]**.\n1. On the next screen, select March, June, September and December. Choose the 20th of the month and choose what time you would like to launch the workflow.\n1. Next select the validity period for the query. For example, if you want this activity to be permanently active, select **[!UICONTROL Permanent validity]**.\n\n   ![](assets/incremental_query_example_2.png)\n\n1. After approving the incremental query, configure the list update activity as explained in [List update](list-update.md).\n\nThe workflow will therefore be automatically launched just before the start of each season. The list will be updated with new, eligible recipients to receive the offers.\n",
+    "headers": [
+        [
+            "title",
+            "Quarterly list update using an incremental query"
+        ],
+        [
+            "description",
+            "In this use case, an incremental query is used to automatically update a recipient list"
+        ],
+        [
+            "feature",
+            "Workflows"
+        ]
+    ],
+    "sections": [
+        {
+            "section": "Quarterly list update using an incremental query",
+            "sectionId": "55460269-56a0-4407-9c46-bb6f671dbb38",
+            "paragraphs": [
+                "In the following example, an incremental query is used to automatically update a recipient list. These recipients are targeted as part of seasonal marketing campaigns.",
+                "As these campaigns are launched at the beginning of every season in order to offer relevant sports activities, these lists are updated every quarter. However, a recipient here must only be targeted once every 9 months by this campaign. This allows you to space out the recipient's eligibility frequency and to offer activities for different seasons over the years.",
+                "Add an incremental query as well as a list update activity into a new workflow.",
+                "Configure the Incremental query tab of the activity as specified in Create a query.",
+                "Select the Scheduling & History tab and then specify a 270-day history. A recipient that has already been targeted will no longer be targeted for a period of 270 days, or roughly 9 months.",
+                "Then click the Change... button.",
+                "To ensure the list is updated before the start of each season, select Monthly.",
+                "On the next screen, select March, June, September and December. Choose the 20th of the month and choose what time you would like to launch the workflow.",
+                "Next select the validity period for the query. For example, if you want this activity to be permanently active, select Permanent validity.",
+                "After approving the incremental query, configure the list update activity as explained in List update.",
+                "The workflow will therefore be automatically launched just before the start of each season. The list will be updated with new, eligible recipients to receive the offers."
+            ]
+        }
+    ]
+}

@@ -1,0 +1,189 @@
+{
+    "guid": "5b22f833-5d0b-4f7d-b891-ed6854a157ef",
+    "title": "Creating and configuring the database",
+    "path": "help\\installation\\using\\creating-and-configuring-the-database.md",
+    "fullText": "---\nproduct: campaign\ntitle: Creating and configuring the database\ndescription: Creating and configuring the database\nfeature: Installation, Instance Settings\nbadge-v7-prem: label=\"On-premise/hybrid only\" type=\"Caution\" url=\"https://experienceleague.adobe.com/docs/campaign-classic/using/installing-campaign-classic/architecture-and-hosting-models/hosting-models-lp/hosting-models.html\" tooltip=\"Applies to on-premise and hybrid deployments only\"\naudience: installation\ncontent-type: reference\ntopic-tags: initial-configuration\nexl-id: f40bab8c-5064-40d9-beed-101a9f22c094\n---\n# Creating and configuring the database{#creating-and-configuring-the-database}\n\nWhen you create a database, Adobe Campaign provides two different options:\n\n1. Creating or recycling a database: choose this options if you want to create a new database or re-use an existing one. Refer to [Case 1: Creating/recycling a database](#case-1--creating-recycling-a-database).\n1. Using an existing database: choose this option if an empty database has already been created by your administrator and you want to use it; or to extend the structure of an existing database. Refer to [Case 2: Using an existing database](#case-2--using-an-existing-database).\n\nThe configuration steps are detailed hereafter.\n\n>[!CAUTION]\n>\n>Names of databases, users and schemas must not start with a number or include special characters.\n>\n>Only the **internal** identifier can carry out these operations. For more on this, refer to [this section](../../installation/using/configuring-campaign-server.md#internal-identifier).\n\n## Case 1: Creating/recycling a database {#case-1--creating-recycling-a-database}\n\nThe steps for creating a database or recycling an existing base are presented below. Some configurations depend on the database engine used:\n\nThe following steps are involved:\n\n* [Step 1 - Selecting the database engine](#step-1---selecting-the-database-engine),\n* [Step 2 - Connecting to the server](#step-2---connecting-to-the-server),\n* [Step 3 - Connection and characteristics of the database](#step-3---connection-and-characteristics-of-the-database),\n* [Step 4 - Packages to install](#step-4---packages-to-install),\n* [Step 5 - Creation steps](#step-5---creation-steps),\n* [Step 6 - Creating the database](#step-6---creating-the-database).\n\n### Step 1 - Selecting the database engine {#step-1---selecting-the-database-engine}\n\nSelect the database engine among those in the drop-down list.\n\n![](assets/s_ncs_install_db_select_engine.png)\n\nSupported databases are listed in Campaign [Compatibility matrix](../../rn/using/compatibility-matrix.md).\n\nIdentify the server and choose the type of operation to perform. In this case, **[!UICONTROL Create or recycle a database]**.\n\n![](assets/s_ncs_install_db_oracle_creation01.png)\n\nDepending on the selected database engine, the server identification information may vary.\n\n* For an **Oracle** engine, populate the **TNS name** defined for the application server.\n* For a **PostgreSQL** engine, you must specify the DNS name (or IP address) defined on the application server to access the database server.\n* For a **Microsoft SQL Server** engine, you must define: the DNS name (or IP address) defined on the application server to access the database server: **DNS** or **DNS `\\<instance>`** (instance mode),\n\n   >[!CAUTION]\n   >\n   > Starting 20.3, Windows NT authentication is decommissioned. **[!UICONTROL SQL Server authentication]** is now the only authentication mode available for Microsoft SQL Server. [Read more](../../rn/using/deprecated-features.md)\n\n   ![](assets/s_ncs_install_db_mssql_creation01.png)\n\n### Step 2 - Connecting to the server {#step-2---connecting-to-the-server}\n\nIn the **[!UICONTROL Server access]** window, define the database server access. \n\n![](assets/s_ncs_install_db_oracle_creation02.png)\n\nTo do this, enter the name and password of an **Administration system account** which has permission to access the databases, i.e.:\n\n* **system** for an Oracle database,\n* **sa** for a Microsoft SQL Server database,\n* **postgres** for a PostgreSQL database,\n\n### Step 3 - Connection and characteristics of the database {#step-3---connection-and-characteristics-of-the-database}\n\nThe following step lets you configure the settings for logging on to the database.\n\n![](assets/s_ncs_install_db_oracle_creation03.png)\n\nYou need to define the following settings:\n\n* Specify the name of the database to be created.\n* Enter the password of the account linked to this database.\n* Indicate whether or not the database must be in Unicode.\n\n  The **[!UICONTROL Unicode database]** option lets you store all character types in Unicode regardless of language.\n\n  >[!NOTE]\n  >\n  >With an Oracle database, the **[!UICONTROL Unicode storage]** option lets you use **NCLOB** and **NVARCHAR** type fields. \n  > \n  >If you do not select this option, the character set (charset) of the Oracle database must enable data storage in all languages (AL32UTF8 is recommended).\n\n* Choose a time zone for the database and specify whether you want it to be in UTC (if available).\n\n  For more on this, refer to [Time zone management](../../installation/using/time-zone-management.md).\n\n### Step 4 - Packages to install {#step-4---packages-to-install}\n\nSelect the packages you wish to install.\n\nRefer to your license agreement to check which solutions and options you are entitled to install, such as \"Interaction\" or \"Social Marketing\".\n\n![](assets/s_ncs_install_modules.png)\n\n### Step 5 - Creation steps {#step-5---creation-steps}\n\nThe **[!UICONTROL Creation steps]** window enables you to display and edit the SQL script used to create the tables.\n\n![](assets/s_ncs_install_db_oracle_creation04.png)\n\n* For an Oracle, Microsoft SQL Server or PostgreSQL database, the administrator may also define the **storage parameters** to be used when creating database objects.\n\n  These parameters receive the exact tablespace names (warning: case sensitive). They are respectively stored in the **[!UICONTROL Administration > Platform > Options]** node in the following options (see [this section](../../installation/using/configuring-campaign-options.md#database)):\n\n    * **WdbcOptions_TableSpaceUser**: user tables based on a schema\n    * **WdbcOptions_TableSpaceIndex**: index of user tables based on a schema\n    * **WdbcOptions_TableSpaceWork**: work tables with no schema\n    * **WdbcOptions_TableSpaceWorkIndex**: index of work tables with no schema\n\n* For an Oracle database, the Adobe Campaign user must have access to the Oracle libraries, typically as a member of the **oinstall** group.\n* The **[!UICONTROL Set or change the administrator password]** option lets you enter the password linked to the Adobe Campaign operator with administrator rights.\n\n  We recommend defining an Adobe Campaign account administrator password for security purposes.\n\n### Step 6 - Creating the database {#step-6---creating-the-database}\n\nThe final stage of the wizard enables you to create the database. Click **[!UICONTROL Start]** to confirm.\n\n![](assets/s_ncs_install_db_oracle_creation06.png)\n\nOnce the database is created, you can re-connect to finalize instance configuration.\n\nYou must now start the deployment wizard to finish configuring the instance. Refer to [Deployment wizard](../../installation/using/deploying-an-instance.md#deployment-wizard).\n\nThe connection settings for the database linked to the instance are stored in the file **`/conf/config-<instance>.xml`** found in the Adobe Campaign installation directory.\n\nExample of a Microsoft SQL Server configuration on the base61 database linked to the 'campaign' account with its encrypted password:\n\n```\n<dbcnx encrypted=\"1\" login=\"campaign:myBase\" password=\"myPassword\" provider=\"DB\" server=\"dbServer\"/>\n```\n\n## Case 2: Using an existing database {#case-2--using-an-existing-database}\n\nThe database, as well as the user, must have been created by the database administrator and the access rights correctly configured.\n\nFor instance, for an Oracle database, the minimum required rights are: GRANT CONNECT, RESOURCE and UNLIMITED TABLESPACE.\n\nTo use an existing database, the configuration steps are as follows:\n\n* [Step 1 - Choosing the database engine](#step-1---choosing-the-database-engine),\n* [Step 2 - Database connection settings](#step-2---database-connection-settings),\n* [Step 3 - Packages to install](#step-3---packages-to-install),\n* [Step 4 - Creation steps](#step-4---creation-steps),\n* [Step 5 - Creating the database](#step-5---creating-the-database).\n\n### Step 1 - Choosing the database engine {#step-1---choosing-the-database-engine}\n\nChoose the database engine from the drop-down list.\n\n![](assets/s_ncs_install_db_select_engine.png)\n\nIdentify the server and choose the type of operation you want to carry out. In this case, **[!UICONTROL Use an existing database]**.\n\n![](assets/s_ncs_install_db_oracle_exists_01.png)\n\nDepending on the selected database engine, the server identification information may vary.\n\n* For an **Oracle** engine, populate the **TNS name** defined for the application server.\n* For a **PostgreSQL** engine, you must specify the DNS name (or IP address) defined on the application server to access the database server.\n* For a **Microsoft SQL Server** engine, you must define:\n\n    1. the DNS name (or IP address) defined on the application server to access the database server,\n    1. the security method used to access Microsoft SQL Server: **[!UICONTROL SQL Server authentication]** or **[!UICONTROL Windows NT authentication]**.\n    \n       ![](assets/s_ncs_install_db_mssql_exists_01.png)\n\n### Step 2 - Database connection settings {#step-2---database-connection-settings}\n\nIn the **[!UICONTROL Database]** window, define the database connection settings. \n\n![](assets/s_ncs_install_db_oracle_exists_02.png)\n\nYou need to define the following settings:\n\n* Enter the name of the database to be used,\n* Enter the name and password of the account associated with this database,\n\n  >[!NOTE]\n  >\n  >Make sure that both the schema name and user name match. Recommended way of creating database is through campaign console client.\n  >For an Oracle database, you do not need to enter the account name.\n\n* Indicate whether the database should be Unicode or not.\n\n### Step 3 - Packages to install {#step-3---packages-to-install}\n\nSelect the packages you wish to install.\n\nRefer to your license agreement to check which solutions and options you are entitled to install, such as \"Interaction\" or \"Leads\".\n\n![](assets/s_ncs_install_modules.png)\n\n### Step 4 - Creation steps {#step-4---creation-steps}\n\nThe **[!UICONTROL Creation steps]** window enables you to display and edit the SQL script used to create the tables.\n\n![](assets/s_ncs_install_db_oracle_creation04.png)\n\n* For Oracle, Microsoft SQL Server or PostgreSQL databases, the administrator can define the **storage parameters** to be used when creating database objects.\n* For an Oracle database, the Adobe Campaign user must have access to the Oracle libraries, typically as a member of the **oinstall** group.\n* The **[!UICONTROL Set or change the administrator password]** option lets you enter the password linked to the Adobe Campaign operator with administrator rights.\n\n  We recommend defining an Adobe Campaign account administrator password for security purposes.\n\n### Step 5 - Creating the database {#step-5---creating-the-database}\n\nThe final stage of the wizard enables you to create the database. Click **[!UICONTROL Start]** to confirm.\n\n![](assets/s_ncs_install_db_oracle_creation06.png)\n\nOnce database creation is complete, you can reconnect to finalize instance configuration.\n\nYou must now start the deployment wizard to finish configuring the instance. Refer to [Deployment wizard](../../installation/using/deploying-an-instance.md#deployment-wizard).\n\nThe connection settings for the database linked to the instance are stored in the file **`/conf/config-<instance>.xml`** found in the Adobe Campaign installation directory.\n\nExample of a Microsoft SQL Server configuration on the base61 database linked to the 'campaign' account with its encrypted password:\n\n```\n<dbcnx encrypted=\"1\" login=\"campaign:myBase\" password=\"myPassword\" provider=\"DB\" server=\"dbServer\"/>\n```\n",
+    "headers": [
+        [
+            "title",
+            "Creating and configuring the database"
+        ],
+        [
+            "description",
+            "Creating and configuring the database"
+        ],
+        [
+            "feature",
+            "Installation, Instance Settings"
+        ],
+        [
+            "topic-tags",
+            "initial-configuration"
+        ]
+    ],
+    "sections": [
+        {
+            "section": "Creating and configuring the database",
+            "sectionId": "68cb1f31-6240-4a2f-ad69-50303b4e3e26",
+            "paragraphs": [
+                "When you create a database, Adobe Campaign provides two different options:",
+                "Creating or recycling a database: choose this options if you want to create a new database or re-use an existing one. Refer to Case 1: Creating/recycling a database.\nUsing an existing database: choose this option if an empty database has already been created by your administrator and you want to use it; or to extend the structure of an existing database. Refer to Case 2: Using an existing database.",
+                "The configuration steps are detailed hereafter.",
+                "CAUTION",
+                "Names of databases, users and schemas must not start with a number or include special characters.",
+                "Only the internal identifier can carry out these operations. For more on this, refer to this section."
+            ]
+        },
+        {
+            "section": "Case 1: Creating/recycling a database",
+            "sectionId": "a8afe03c-ee4f-4e0b-bc80-286b6e671ca1",
+            "paragraphs": [
+                "The steps for creating a database or recycling an existing base are presented below. Some configurations depend on the database engine used:",
+                "The following steps are involved:",
+                "Step 1 - Selecting the database engine,\nStep 2 - Connecting to the server,\nStep 3 - Connection and characteristics of the database,\nStep 4 - Packages to install,\nStep 5 - Creation steps,\nStep 6 - Creating the database."
+            ]
+        },
+        {
+            "section": "Step 1 - Selecting the database engine",
+            "sectionId": "4dcdff34-6ce6-4531-973d-e365e62801bc",
+            "paragraphs": [
+                "Select the database engine among those in the drop-down list.",
+                "Supported databases are listed in Campaign Compatibility matrix.",
+                "Identify the server and choose the type of operation to perform. In this case, Create or recycle a database.",
+                "Depending on the selected database engine, the server identification information may vary.",
+                "For an Oracle engine, populate the TNS name defined for the application server.",
+                "For a PostgreSQL engine, you must specify the DNS name (or IP address) defined on the application server to access the database server.",
+                "For a Microsoft SQL Server engine, you must define: the DNS name (or IP address) defined on the application server to access the database server: DNS or DNS \\<instance> (instance mode),",
+                "CAUTION",
+                "Starting 20.3, Windows NT authentication is decommissioned. SQL Server authentication is now the only authentication mode available for Microsoft SQL Server. Read more"
+            ]
+        },
+        {
+            "section": "Step 2 - Connecting to the server",
+            "sectionId": "73ce4d80-a81a-4140-8621-be4be0be97d1",
+            "paragraphs": [
+                "In the Server access window, define the database server access.",
+                "To do this, enter the name and password of an Administration system account which has permission to access the databases, i.e.:",
+                "system for an Oracle database,\nsa for a Microsoft SQL Server database,\npostgres for a PostgreSQL database,"
+            ]
+        },
+        {
+            "section": "Step 3 - Connection and characteristics of the database",
+            "sectionId": "7824c490-e556-477f-960e-723651810b20",
+            "paragraphs": [
+                "The following step lets you configure the settings for logging on to the database.",
+                "You need to define the following settings:",
+                "Specify the name of the database to be created.",
+                "Enter the password of the account linked to this database.",
+                "Indicate whether or not the database must be in Unicode.",
+                "The Unicode database option lets you store all character types in Unicode regardless of language.",
+                "NOTE",
+                "With an Oracle database, the Unicode storage option lets you use NCLOB and NVARCHAR type fields.",
+                "If you do not select this option, the character set (charset) of the Oracle database must enable data storage in all languages (AL32UTF8 is recommended).",
+                "Choose a time zone for the database and specify whether you want it to be in UTC (if available).",
+                "For more on this, refer to Time zone management."
+            ]
+        },
+        {
+            "section": "Step 4 - Packages to install",
+            "sectionId": "4726032d-91af-4e26-b4df-5e4af71a5237",
+            "paragraphs": [
+                "Select the packages you wish to install.",
+                "Refer to your license agreement to check which solutions and options you are entitled to install, such as \"Interaction\" or \"Social Marketing\"."
+            ]
+        },
+        {
+            "section": "Step 5 - Creation steps",
+            "sectionId": "c2c75a49-d0e3-43f1-a7d7-d65093ec04c7",
+            "paragraphs": [
+                "The Creation steps window enables you to display and edit the SQL script used to create the tables.",
+                "For an Oracle, Microsoft SQL Server or PostgreSQL database, the administrator may also define the storage parameters to be used when creating database objects.",
+                "These parameters receive the exact tablespace names (warning: case sensitive). They are respectively stored in the Administration > Platform > Options node in the following options (see this section):",
+                "WdbcOptions_TableSpaceUser: user tables based on a schema\nWdbcOptions_TableSpaceIndex: index of user tables based on a schema\nWdbcOptions_TableSpaceWork: work tables with no schema\nWdbcOptions_TableSpaceWorkIndex: index of work tables with no schema",
+                "For an Oracle database, the Adobe Campaign user must have access to the Oracle libraries, typically as a member of the oinstall group.",
+                "The Set or change the administrator password option lets you enter the password linked to the Adobe Campaign operator with administrator rights.",
+                "We recommend defining an Adobe Campaign account administrator password for security purposes."
+            ]
+        },
+        {
+            "section": "Step 6 - Creating the database",
+            "sectionId": "49ba0934-a8f4-47c8-aecb-deb31b659982",
+            "paragraphs": [
+                "The final stage of the wizard enables you to create the database. Click Start to confirm.",
+                "Once the database is created, you can re-connect to finalize instance configuration.",
+                "You must now start the deployment wizard to finish configuring the instance. Refer to Deployment wizard.",
+                "The connection settings for the database linked to the instance are stored in the file /conf/config-<instance>.xml found in the Adobe Campaign installation directory.",
+                "Example of a Microsoft SQL Server configuration on the base61 database linked to the 'campaign' account with its encrypted password:",
+                "<dbcnx encrypted=\"1\" login=\"campaign:myBase\" password=\"myPassword\" provider=\"DB\" server=\"dbServer\"/>"
+            ]
+        },
+        {
+            "section": "Case 2: Using an existing database",
+            "sectionId": "d9803246-2999-4dc5-93e4-ee9dd0763db7",
+            "paragraphs": [
+                "The database, as well as the user, must have been created by the database administrator and the access rights correctly configured.",
+                "For instance, for an Oracle database, the minimum required rights are: GRANT CONNECT, RESOURCE and UNLIMITED TABLESPACE.",
+                "To use an existing database, the configuration steps are as follows:",
+                "Step 1 - Choosing the database engine,\nStep 2 - Database connection settings,\nStep 3 - Packages to install,\nStep 4 - Creation steps,\nStep 5 - Creating the database."
+            ]
+        },
+        {
+            "section": "Step 1 - Choosing the database engine",
+            "sectionId": "9f50a9fb-11de-4f61-a7a1-ab6a9de67301",
+            "paragraphs": [
+                "Choose the database engine from the drop-down list.",
+                "Identify the server and choose the type of operation you want to carry out. In this case, Use an existing database.",
+                "Depending on the selected database engine, the server identification information may vary.",
+                "For an Oracle engine, populate the TNS name defined for the application server.",
+                "For a PostgreSQL engine, you must specify the DNS name (or IP address) defined on the application server to access the database server.",
+                "For a Microsoft SQL Server engine, you must define:",
+                "the DNS name (or IP address) defined on the application server to access the database server,",
+                "the security method used to access Microsoft SQL Server: SQL Server authentication or Windows NT authentication."
+            ]
+        },
+        {
+            "section": "Step 2 - Database connection settings",
+            "sectionId": "dca04d8c-b0ad-4d71-b06c-f642eb1d87e4",
+            "paragraphs": [
+                "In the Database window, define the database connection settings.",
+                "You need to define the following settings:",
+                "Enter the name of the database to be used,",
+                "Enter the name and password of the account associated with this database,",
+                "NOTE",
+                "Make sure that both the schema name and user name match. Recommended way of creating database is through campaign console client.\nFor an Oracle database, you do not need to enter the account name.",
+                "Indicate whether the database should be Unicode or not."
+            ]
+        },
+        {
+            "section": "Step 3 - Packages to install",
+            "sectionId": "a95e44f3-545a-44db-b80f-ed247b779983",
+            "paragraphs": [
+                "Select the packages you wish to install.",
+                "Refer to your license agreement to check which solutions and options you are entitled to install, such as \"Interaction\" or \"Leads\"."
+            ]
+        },
+        {
+            "section": "Step 4 - Creation steps",
+            "sectionId": "d50f20e9-e0b0-4e84-a8b9-560438ec0955",
+            "paragraphs": [
+                "The Creation steps window enables you to display and edit the SQL script used to create the tables.",
+                "For Oracle, Microsoft SQL Server or PostgreSQL databases, the administrator can define the storage parameters to be used when creating database objects.",
+                "For an Oracle database, the Adobe Campaign user must have access to the Oracle libraries, typically as a member of the oinstall group.",
+                "The Set or change the administrator password option lets you enter the password linked to the Adobe Campaign operator with administrator rights.",
+                "We recommend defining an Adobe Campaign account administrator password for security purposes."
+            ]
+        },
+        {
+            "section": "Step 5 - Creating the database",
+            "sectionId": "31799bbb-2e24-49f9-8300-b57144c7b16c",
+            "paragraphs": [
+                "The final stage of the wizard enables you to create the database. Click Start to confirm.",
+                "Once database creation is complete, you can reconnect to finalize instance configuration.",
+                "You must now start the deployment wizard to finish configuring the instance. Refer to Deployment wizard.",
+                "The connection settings for the database linked to the instance are stored in the file /conf/config-<instance>.xml found in the Adobe Campaign installation directory.",
+                "Example of a Microsoft SQL Server configuration on the base61 database linked to the 'campaign' account with its encrypted password:",
+                "<dbcnx encrypted=\"1\" login=\"campaign:myBase\" password=\"myPassword\" provider=\"DB\" server=\"dbServer\"/>"
+            ]
+        }
+    ]
+}

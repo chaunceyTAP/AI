@@ -1,0 +1,66 @@
+{
+    "guid": "f687c61e-bff7-47d3-9003-dcf9d2a5234f",
+    "title": "Delivery statuses",
+    "path": "help\\delivery\\using\\delivery-statuses.md",
+    "fullText": "---\nproduct: campaign\ntitle: Delivery statuses\ndescription: Learn more about the statuses available on your delivery dashboard\nbadge-v8: label=\"Also applies to v8\" type=\"Positive\" tooltip=\"Also applies to Campaign v8\"\nfeature: Monitoring, Deliverability\nrole: User\nexl-id: 0663257a-3a70-4e0c-bbeb-8242aaa0876d\n---\n# Delivery statuses {#delivery-statuses}\n\n \n\n<!--ajouter intro \n\najouter screenshot -->\n\nOnce a delivery has been sent, the delivery dashboard displays a status that allows you to monitor if the sending has been successful. Possible statuses are detailed in the section below.\n\n![](assets/delivery-status.png)\n\nFor more details on the different delivery failures you can encounter, and how to solve them, refer to [this page](understanding-delivery-failures.md).\n\n**Related topics:**\n\n* [Delivery dashboard](delivery-dashboard.md)\n* [Delivery troubleshooting](delivery-troubleshooting.md)\n* [Get started with deliverability](about-deliverability.md)\n\n## List of delivery statuses {#list-delivery-statuses}\n\n<table> \n <thead> \n  <tr> \n   <th> Status<br /> </th> \n   <th> Definitions and solutions<br /> </th> \n  </tr> \n </thead> \n <tbody> \n  <tr> \n   <td> Sent<br /> </td> \n   <td> The delivery was correctly sent to the message provider (but the recipient did not necessarily receive it).<br /> </td> \n  </tr> \n  <tr> \n   <td> Ignored<br /> </td> \n   <td> The delivery was not sent to the recipient because of an error with their address. It was either on denylist, quarantined, not provided or a duplicate. <br /> </td> \n  </tr> \n  <tr> \n   <td> Failed<br /> </td> \n   <td> The delivery could not reach the recipient because of an invalid address or a full inbox for example. It can also be linked to an issue with personalization blocks since they can generate errors when the schemas do not match the delivery mapping. See <a href=\"understanding-delivery-failures.md\" target=\"_blank\">Understanding delivery failures</a><br /> </td> \n  </tr>\n  <tr> \n   <td> Pending<br /> </td> \n   <td> The delivery is ready to be sent and is going to be processed by the delivery server (MTA). See <a href=\"#pending-status\" target=\"_blank\">Pending status</a>.<br /> </td> \n  </tr> \n  <tr> \n   <td> Not applicable<br /> </td> \n   <td> The delivery was taken into account by the server (MTA) but not processed.<br /> </td> \n  </tr>  \n  <tr> \n   <td> Delivery canceled<br /> </td> \n   <td> The delivery was canceled by an operator.<br /> </td> \n  </tr> \n  <tr> \n   <td> Taken into account by the service provider<br /> </td> \n   <td> The SMS service provider received the delivery.<br /> For hosted or hybrid installations, if you have upgraded to the <a href=\"sending-with-enhanced-mta.md\" target=\"_blank\">Enhanced MTA</a>, the message was successfully relayed from Campaign to the Enhanced MTA.</td> \n  </tr> \n  <tr> \n   <td> Received on mobile<br /> </td> \n   <td> The recipient received the SMS on their mobile device.<br /> </td> \n  </tr>\n  <tr> \n   <td> Sent to the service provider<br /> </td> \n   <td> The delivery was sent to the SMS service provider but not received yet.<br />\n   </td> \n  </tr> \n  <tr> \n   <td> Prepared<br /> </td> \n   <td> Intermediary status used only for external connectors such as the mobile channel. It follows the 'Pending' status and is the external connector that will determine the following status.<br /> </td> \n  </tr> \n </tbody> \n</table>\n\nTo learn how to optimize the deliverability of your Adobe Campaign emails, refer to [this section](about-deliverability.md). For a deeper dive on deliverability, refer to the [Adobe Deliverability Best Practice Guide](https://experienceleague.adobe.com/docs/deliverability-learn/deliverability-best-practice-guide/introduction.html).\n\n## Pending status {#pending-status}\n\nAfter confirming your delivery, you can see that the status of your delivery is **[!UICONTROL Pending]**. This status means that the execution process is waiting on the availability of some resources.\n\nThe **[!UICONTROL Pending]** status can first mean that your delivery has been scheduled and is pending until the given date. For more on this, refer to the [Delivery scheduling](steps-sending-the-delivery.md#scheduling-the-delivery-sending) section.\n\nIf your delivery is not being sent and its status remains **[!UICONTROL Pending]**, it can be the result of:\n\n* The MTA (Message Transfer Agent), which runs modules and processes on the delivery server and which manages email sending, may have not been started, or may need to be restarted.\n\n    To check this and to start the module if necessary, apply the following steps:\n\n    >[!NOTE]\n    >\n    >This operation can be performed with an **on-premise** or **hybrid** hosting model with access the the Campaign server (see [hosting models](../../installation/using/hosting-models.md)).\n\n    1. Check that your `mta@<instance>` modules are launched on your MTA servers.\n\n        ```\n        nlserver pdump\n        HH:MM:SS > Application server for Adobe Campaign Classic (X.Y.Z YY.R build nnnn@SHA1) of DD/MM/YYYY\n        [...]\n        mta@<instance-name> (9268) - 23.0 Mb\n        [...]\n        ```\n\n    1. If the MTA is not listed, start it with the following command:\n\n        ```\n        nlserver start mta@<instance-name>\n        ```\n\n        >[!NOTE]\n        >\n        >Replace `<instance-name>` with the name of your instance (production, development, etc.). The instance name is identified via the configuration files: `[path of application]nl6/conf/config-<instance-name>.xml`\n\n* The delivery may be using an affinity not configured on the sending server.\n    \n    In this case, check the configuration of the traffic management (IP affinity) and use the **[!UICONTROL Managing affinities with IP addresses]** field to link deliveries to the MTA that manages the affinity. For more information on affinities, refer to [this section](../../installation/using/configure-delivery-settings.md).\n\n* When too many campaigns are running, the delivery status remains in 'Pending' status.\n\n    The limit of simultaneous campaigns is defined in the **[!UICONTROL NmsOperation_LimitConcurrency]** option. Default value is 10.\n    \n    Learn more about options in [this page](../../installation/using/configuring-campaign-options.md).\n\n\n**Related topics:**\n\n* [Delivery logs and history](#delivery-logs-and-history)\n* [Understanding delivery failures](understanding-delivery-failures.md)\n* [Delivery failure types and reasons](understanding-delivery-failures.md#delivery-failure-types-and-reasons)\n",
+    "headers": [
+        [
+            "title",
+            "Delivery statuses"
+        ],
+        [
+            "description",
+            "Learn more about the statuses available on your delivery dashboard"
+        ],
+        [
+            "feature",
+            "Monitoring, Deliverability"
+        ]
+    ],
+    "sections": [
+        {
+            "section": "Delivery statuses",
+            "sectionId": "ef0bfa36-a7af-499c-b177-8c3a3c2d1ad4",
+            "paragraphs": [
+                "Once a delivery has been sent, the delivery dashboard displays a status that allows you to monitor if the sending has been successful. Possible statuses are detailed in the section below.",
+                "For more details on the different delivery failures you can encounter, and how to solve them, refer to this page.",
+                "Related topics:",
+                "Delivery dashboard\nDelivery troubleshooting\nGet started with deliverability"
+            ]
+        },
+        {
+            "section": "List of delivery statuses",
+            "sectionId": "ae985f53-b8f7-4238-a194-ab9cb8c1efa7",
+            "paragraphs": [
+                "TABLE: Status Definitions and solutions Sent The delivery was correctly sent to the message provider (but the recipient did not necessarily receive it). Ignored The delivery was not sent to the recipient because of an error with their address. It was either on denylist, quarantined, not provided or a duplicate. Failed The delivery could not reach the recipient because of an invalid address or a full inbox for example. It can also be linked to an issue with personalization blocks since they can generate errors when the schemas do not match the delivery mapping. See Understanding delivery failures Pending The delivery is ready to be sent and is going to be processed by the delivery server (MTA). See Pending status. Not applicable The delivery was taken into account by the server (MTA) but not processed. Delivery canceled The delivery was canceled by an operator. Taken into account by the service provider The SMS service provider received the delivery. For hosted or hybrid installations, if you have upgraded to the Enhanced MTA, the message was successfully relayed from Campaign to the Enhanced MTA. Received on mobile The recipient received the SMS on their mobile device. Sent to the service provider The delivery was sent to the SMS service provider but not received yet. Prepared Intermediary status used only for external connectors such as the mobile channel. It follows the 'Pending' status and is the external connector that will determine the following status.",
+                "To learn how to optimize the deliverability of your Adobe Campaign emails, refer to this section. For a deeper dive on deliverability, refer to the Adobe Deliverability Best Practice Guide."
+            ]
+        },
+        {
+            "section": "Pending status",
+            "sectionId": "13a45d03-a35a-4171-a782-d8c25ecd62ac",
+            "paragraphs": [
+                "After confirming your delivery, you can see that the status of your delivery is Pending. This status means that the execution process is waiting on the availability of some resources.",
+                "The Pending status can first mean that your delivery has been scheduled and is pending until the given date. For more on this, refer to the Delivery scheduling section.",
+                "If your delivery is not being sent and its status remains Pending, it can be the result of:",
+                "The MTA (Message Transfer Agent), which runs modules and processes on the delivery server and which manages email sending, may have not been started, or may need to be restarted.",
+                "To check this and to start the module if necessary, apply the following steps:",
+                "NOTE",
+                "This operation can be performed with an on-premise or hybrid hosting model with access the the Campaign server (see hosting models).",
+                "Check that your mta@<instance> modules are launched on your MTA servers.",
+                "nlserver pdump\nHH:MM:SS > Application server for Adobe Campaign Classic (X.Y.Z YY.R build nnnn@SHA1) of DD/MM/YYYY\n[...]\nmta@<instance-name> (9268) - 23.0 Mb\n[...]",
+                "If the MTA is not listed, start it with the following command:",
+                "nlserver start mta@<instance-name>",
+                "NOTE",
+                "Replace <instance-name> with the name of your instance (production, development, etc.). The instance name is identified via the configuration files: [path of application]nl6/conf/config-<instance-name>.xml",
+                "The delivery may be using an affinity not configured on the sending server.",
+                "In this case, check the configuration of the traffic management (IP affinity) and use the Managing affinities with IP addresses field to link deliveries to the MTA that manages the affinity. For more information on affinities, refer to this section.",
+                "When too many campaigns are running, the delivery status remains in 'Pending' status.",
+                "The limit of simultaneous campaigns is defined in the NmsOperation_LimitConcurrency option. Default value is 10.",
+                "Learn more about options in this page.",
+                "Related topics:",
+                "Delivery logs and history\nUnderstanding delivery failures\nDelivery failure types and reasons"
+            ]
+        }
+    ]
+}

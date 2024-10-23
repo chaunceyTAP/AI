@@ -1,0 +1,111 @@
+{
+    "guid": "5a1e218e-0665-4326-975a-8ca10d5d3be9",
+    "title": "Updating data",
+    "path": "help\\platform\\using\\updating-data.md",
+    "fullText": "---\nproduct: campaign\ntitle: Updating data\ndescription: Updating data\nfeature: Data Management\naudience: platform\ncontent-type: reference\ntopic-tags: profile-management\nexl-id: f7dfbc22-4ac3-4b61-927f-34ecc4e35154\n---\n# Update data{#updating-data}\n\n>[!NOTE]\n>\n>This page only applies for operators connecting to Campaign with native authentication.\n\nThe data linked to a recipient's profile can be updated manually or automatically.\n\n## Set up an automatic update {#setting-up-an-automatic-update}\n\nAn automatic update can be configured via a workflow. For more on this, refer to [this section](../../workflow/using/update-data.md).\n\n## Perform a mass update {#performing-a-mass-update}\n\nTo perform manual updates, right-click the selected recipient(s) to use the **[!UICONTROL Actions]** shortcut menu, or use the **[!UICONTROL Actions]** icon.\n\n![](assets/s_ncs_user_action_icon.png)\n\nThere are two types of updates: mass update for a set of recipients, and data merging between two profiles. For each action, a wizard lets you configure the update.\n\n### Mass update {#mass-update}\n\nFor mass updating, use **[!UICONTROL Action > Mass update of selected lines...]**. The wizard helps you configure and run the update.\n\nThe first step of the wizard is to specify the field(s) to be updated.\n\nThe left-hand section of the wizard displays the list of available fields. Use the **[!UICONTROL Find]** field to run a search of these fields. Press the **Enter** key to browse the list. The field names matching your entry appear in bold, as shown below.\n\nDouble-click the field(s) to be updated to display them in the right-hand section of the wizard.\n\n![](assets/s_ncs_user_update_wizard01_1.png)\n\nIn the event of an error, use the **[!UICONTROL Delete]** button to delete a field from the list of fields to be updated.\n\nSelect or enter the values to apply to the profiles to be updated.\n\n![](assets/s_ncs_user_update_wizard01_12.png)\n\nYou can click **[!UICONTROL Distribution of values]** to display the distribution of values of the selected field for the recipients present in the current folder (not only the recipients affected by the update).\n\n![](assets/s_ncs_user_update_wizard01_2.png)\n\nYou can define filters to display the distribution of values in this window or modify the current folder to display the distribution of values in another folder. These are read-only actions; they do not affect the configuration of the update being defined.\n\n![](assets/s_ncs_user_update_wizard01_3.png)\n\nClose this window and click **[!UICONTROL Next]** to display the second update wizard step. In this step, you can launch the update by clicking **[!UICONTROL Start]**.\n\n![](assets/s_ncs_user_update_wizard01_4.png)\n\nInformation concerning update execution is displayed in the upper section of the wizard.\n\nThe **[!UICONTROL Stop]** lets you cancel the update, but certain records might have been updated, and stopping the process will not cancel these updates. The progress bar shows how far the operation has advanced.\n\n### Merge data {#merge-data}\n\nSelect **[!UICONTROL Merge selected lines...]** to launch the merging of two recipient profiles. The profiles to be merged must be selected before selecting the option. The merge is configured and launched using a wizard.\n\nThe wizard displays the values to be retrieved for each field completed in one or other of the source profiles. If one or more fields in the profiles to be merged have different values, they are displayed in the **[!UICONTROL List of conflicts]** section. You can then select the default profile using the radio buttons under the list, as in the following example:\n\n![](assets/s_ncs_user_merge_wizard01_1.png)\n\nClick **[!UICONTROL Compute]** to display the result of your choice.\n\n![](assets/s_ncs_user_merge_wizard01_2.png)\n\nCheck the **[!UICONTROL Result]** columns of both sections of the window, and click **[!UICONTROL Finish]** to run the merge.\n\n## Export data {#exporting-data}\n\nThe content of a list can be exported. To configure and run the export:\n\n1. Select records to export.\n1. Right-click and select **[!UICONTROL Export...]**.\n\n    ![](assets/s_ncs_user_export_list.png)\n\n1. Then select the data to extract. By default, all columns displayed are added to the output columns.\n\n    ![](assets/s_ncs_user_export_list_start.png)\n\n   For more on how to configure the export wizard, refer to [this section](../../platform/using/executing-export-jobs.md).\n\n## Subscribe to a service {#subscribing-to-a-service}\n\nIn most cases, recipients subscribe to a newsletter through a dedicated landing page, as explained in [this section](../../delivery/using/managing-subscriptions.md). However, the profiles of filtered recipients can be subscribed to a service (Newsletter or Viral service) manually. To do this:\n\n1. Select the recipients you want to subscribe and right-click. \n1. Select **[!UICONTROL Actions > Subscribe selection to a service]**.\n\n    ![](assets/s_ncs_user_selection_subscribe_service.png)\n\n1. Select the desired service and click **[!UICONTROL Next]**:\n\n    ![](assets/s_ncs_user_selection_subscribe_service_2.png)\n\n    >[!NOTE]\n    >\n    >This editor lets you create a new service: click the **[!UICONTROL Create]** button.\n\n1. You can **[!UICONTROL Send a confirmation message]** to recipients. The content of this message can be configured in the subscription scenario linked to the selected service.\n1. Click the **[!UICONTROL Start]** button to run the subscription process.\n\n    ![](assets/s_ncs_user_selection_subscribe_service_3.png)\n\nThe upper section of the window lets you monitor the execution process. The **[!UICONTROL Stop]** button lets you stop the process. However, recipients already processed will be subscribed.\n\nIf you uncheck the **[!UICONTROL Do not keep a trace of this job in the database]** option, you can select (or create) the execution folder where the information on this process will be stored.\n\nTo check on the process, go to the **[!UICONTROL Subscriptions]** tab on the profiles of the recipients concerned by this operation, or to the **[!UICONTROL Subscriptions]** tab accessed via the **[!UICONTROL Profiles and Targets > Services and Subscriptions]** node.\n\n![](assets/s_ncs_user_selection_subscribe_service_4.png)\n\n>[!NOTE]\n>\n>For more on creating and configuring information services, refer to [this page](../../delivery/using/managing-subscriptions.md).\n",
+    "headers": [
+        [
+            "title",
+            "Updating data"
+        ],
+        [
+            "description",
+            "Updating data"
+        ],
+        [
+            "feature",
+            "Data Management"
+        ],
+        [
+            "topic-tags",
+            "profile-management"
+        ]
+    ],
+    "sections": [
+        {
+            "section": "Update data",
+            "sectionId": "0552eeb1-48db-40f9-92d7-3e0c4ffdb0fb",
+            "paragraphs": [
+                "NOTE",
+                "This page only applies for operators connecting to Campaign with native authentication.",
+                "The data linked to a recipient's profile can be updated manually or automatically."
+            ]
+        },
+        {
+            "section": "Set up an automatic update",
+            "sectionId": "23e9a5dd-d8e4-403e-9d97-fcc449f5dd91",
+            "paragraphs": [
+                "An automatic update can be configured via a workflow. For more on this, refer to this section."
+            ]
+        },
+        {
+            "section": "Perform a mass update",
+            "sectionId": "2d823d13-562f-4379-8032-037adeb5d267",
+            "paragraphs": [
+                "To perform manual updates, right-click the selected recipient(s) to use the Actions shortcut menu, or use the Actions icon.",
+                "There are two types of updates: mass update for a set of recipients, and data merging between two profiles. For each action, a wizard lets you configure the update."
+            ]
+        },
+        {
+            "section": "Mass update",
+            "sectionId": "290d011c-2a9d-4b51-bbf5-738c7b802a3c",
+            "paragraphs": [
+                "For mass updating, use Action > Mass update of selected lines.... The wizard helps you configure and run the update.",
+                "The first step of the wizard is to specify the field(s) to be updated.",
+                "The left-hand section of the wizard displays the list of available fields. Use the Find field to run a search of these fields. Press the Enter key to browse the list. The field names matching your entry appear in bold, as shown below.",
+                "Double-click the field(s) to be updated to display them in the right-hand section of the wizard.",
+                "In the event of an error, use the Delete button to delete a field from the list of fields to be updated.",
+                "Select or enter the values to apply to the profiles to be updated.",
+                "You can click Distribution of values to display the distribution of values of the selected field for the recipients present in the current folder (not only the recipients affected by the update).",
+                "You can define filters to display the distribution of values in this window or modify the current folder to display the distribution of values in another folder. These are read-only actions; they do not affect the configuration of the update being defined.",
+                "Close this window and click Next to display the second update wizard step. In this step, you can launch the update by clicking Start.",
+                "Information concerning update execution is displayed in the upper section of the wizard.",
+                "The Stop lets you cancel the update, but certain records might have been updated, and stopping the process will not cancel these updates. The progress bar shows how far the operation has advanced."
+            ]
+        },
+        {
+            "section": "Merge data",
+            "sectionId": "a5e2d06c-46da-497a-a603-14b477e8de2c",
+            "paragraphs": [
+                "Select Merge selected lines... to launch the merging of two recipient profiles. The profiles to be merged must be selected before selecting the option. The merge is configured and launched using a wizard.",
+                "The wizard displays the values to be retrieved for each field completed in one or other of the source profiles. If one or more fields in the profiles to be merged have different values, they are displayed in the List of conflicts section. You can then select the default profile using the radio buttons under the list, as in the following example:",
+                "Click Compute to display the result of your choice.",
+                "Check the Result columns of both sections of the window, and click Finish to run the merge."
+            ]
+        },
+        {
+            "section": "Export data",
+            "sectionId": "ea8f9f04-993a-4000-9e69-2aec13d725f0",
+            "paragraphs": [
+                "The content of a list can be exported. To configure and run the export:",
+                "Select records to export.",
+                "Right-click and select Export....",
+                "",
+                "Then select the data to extract. By default, all columns displayed are added to the output columns.",
+                "",
+                "For more on how to configure the export wizard, refer to this section."
+            ]
+        },
+        {
+            "section": "Subscribe to a service",
+            "sectionId": "1abb7cd3-8c72-41e8-a0fa-22a209c2c22a",
+            "paragraphs": [
+                "In most cases, recipients subscribe to a newsletter through a dedicated landing page, as explained in this section. However, the profiles of filtered recipients can be subscribed to a service (Newsletter or Viral service) manually. To do this:",
+                "Select the recipients you want to subscribe and right-click.",
+                "Select Actions > Subscribe selection to a service.",
+                "",
+                "Select the desired service and click Next:",
+                "",
+                "NOTE",
+                "This editor lets you create a new service: click the Create button.",
+                "You can Send a confirmation message to recipients. The content of this message can be configured in the subscription scenario linked to the selected service.",
+                "Click the Start button to run the subscription process.",
+                "The upper section of the window lets you monitor the execution process. The Stop button lets you stop the process. However, recipients already processed will be subscribed.",
+                "If you uncheck the Do not keep a trace of this job in the database option, you can select (or create) the execution folder where the information on this process will be stored.",
+                "To check on the process, go to the Subscriptions tab on the profiles of the recipients concerned by this operation, or to the Subscriptions tab accessed via the Profiles and Targets > Services and Subscriptions node.",
+                "NOTE",
+                "For more on creating and configuring information services, refer to this page."
+            ]
+        }
+    ]
+}

@@ -1,0 +1,148 @@
+{
+    "guid": "0d604e78-7739-4d1c-b288-eea2f352959c",
+    "title": "Generic import samples",
+    "path": "help\\platform\\using\\import-operations-samples.md",
+    "fullText": "---\nproduct: campaign\ntitle: Generic import samples\ndescription: Learn more about generic imports you can perform using import jobs\nfeature: Data Management\nbadge-v8: label=\"Also applies to v8\" type=\"Positive\" tooltip=\"Also applies to Campaign v8\"\naudience: platform\ncontent-type: reference\ntopic-tags: importing-and-exporting-data\nexl-id: 4582b524-2b6d-484c-bace-29d2e69f60e9\n---\n# Generic import samples {#import-operations-samples}\n\n \n\n## Import from a list of recipients {#example--import-from-a-list-of-recipients}\n\nTo create and supply a list of recipients from the overview of lists, apply the following steps:\n\n1. Creating the list\n\n    * Click the **[!UICONTROL Lists]** link in the **[!UICONTROL Profiles and targets]** menu of the Adobe Campaign home page.\n    * Click the **[!UICONTROL Create]** and then the **[!UICONTROL Import a list]** button.\n\n1. Selecting the file to import\n\n   Click the folder to the right of the **[!UICONTROL Local file]** field and select the file containing the list to import.\n\n   ![](assets/s_ncs_user_import_example00_01.png)\n\n1. List name and storage\n\n   Input the name of the list and select the directory where it should be saved.\n\n   ![](assets/s_ncs_user_import_example00_02.png)\n\n1. Launching the import\n\n   Click **[!UICONTROL Next]** and then **[!UICONTROL Start]** to start importing the list.\n\n   ![](assets/s_ncs_user_import_example00_03.png)\n\n## Import new records from a text file {#example--import-new-records-from-a-text-file-}\n\nTo import new recipient profiles stored in a text file into the Adobe Campaign database, apply the following steps:\n\n1. Choosing a template\n\n    * From the Adobe Campaign home page, click the **[!UICONTROL Profiles and targets]** link, then **[!UICONTROL Jobs]**. Above the list of jobs, click **[!UICONTROL New import]**.\n    * Keep the **[!UICONTROL New text import]** template selected by default.\n    * Change the label and the description.\n    * Select **[!UICONTROL Simple import]**.\n    * Keep the default job folder.\n    * Click **[!UICONTROL Advanced parameters]** and select the **[!UICONTROL Tracking mode]** option to view the details of your import during execution.\n\n1. Selecting the file to import\n\n   Click the folder to the right of the **[!UICONTROL Local file]** field and select the file you want to import.\n\n   ![](assets/s_ncs_user_import_example01_01.png)\n\n1. Associating fields\n\n   Click the **[!UICONTROL Guess the destination fields]** icon to map the source and destination schemas automatically. Check the information in this window before clicking **[!UICONTROL Next]**.\n\n   ![](assets/s_ncs_user_import_example03_01.png)\n\n1. Reconciliation\n\n    * Go to the **Recipients (nms:recipient)** table.\n    * Select the **[!UICONTROL Insertion]** operation and leave the default values in the other fields.\n    \n      ![](assets/s_ncs_user_import_example04_01.png)\n\n1. Importing recipients\n\n    * If necessary, specify a folder for your records to be imported into.\n    \n      ![](assets/s_ncs_user_import_example05_01.png)\n\n1. Launching the import\n\n    * Click **[!UICONTROL Start]**.\n\n      In the central area of the editor, you can check that the import operation has succeeded and view the number of records processed.\n    \n      ![](assets/s_ncs_user_import_example06_01.png)\n\n      The **[!UICONTROL Tracking]** mode lets you track the details of the import for each record in the source file. To do this, from the home page click **[!UICONTROL Profiles and Targets]** then **[!UICONTROL Processes]**, select the relevant import, and look up the **[!UICONTROL General]**, **[!UICONTROL Journal]** and **[!UICONTROL Rejects]** tabs.\n\n        * Checking import progress\n        \n          ![](assets/s_ncs_user_import_example07_01.png)\n\n        * Process viewing for each record\n        \n          ![](assets/s_ncs_user_import_example07_02.png)\n\n## Update and insert recipients {#example--update-and-insert-recipients}\n\nWe want to update existing records in the database and create new ones from a text file. Here is an example of the procedure:\n\n1. Choosing a template\n\n   Repeat the steps described in example 2 above.\n\n1. File to import\n\n   Select the file that you want to import.\n\n   In our example, the overview of the first lines of the file shows that the file contains updates for three records and the creation of a record.\n\n   ![](assets/s_ncs_user_import_example02_02.png)\n\n1. Associating fields\n\n   Apply the procedure in example 2 above.\n\n1. Reconciliation\n\n    * Keep **[!UICONTROL Update or insert]** selected by default.\n    * Keep the option **[!UICONTROL Management of duplicates]** in **[!UICONTROL Update]** mode so that existing records in the database will be modified with data from the text file.\n    * Select the fields **[!UICONTROL Birth date]**, **[!UICONTROL Name]** and **[!UICONTROL Company]** and assign a reconciliation key to them. \n    \n      ![](assets/s_ncs_user_import_example04_02.png)\n\n1. Launching the import\n\n    * Click **[!UICONTROL Start]**.\n\n      In the tracking window, you can check that the import has succeeded and view the number of records processed.\n    \n      ![](assets/s_ncs_user_import_example06_02.png)\n\n    * Look in the recipient table to check that the records have been modified by this operation.\n    \n      ![](assets/s_ncs_user_import_example06_03.png)\n\n## Enrich the values with those of an external file {#example--enrich-the-values-with-those-of-an-external-file}\n\nWe want to modify certain fields in a database table from a text file, giving priority to the values contained in the database.\n\nIn this example, you can see that certain fields in your text file have a value, while the corresponding fields in the database are empty. Other fields contain a different value from the one contained in the database.\n\n* Content of the text file to import.\n\n  ![](assets/s_ncs_user_import_example02_03.png)\n\n* Database status before import\n\n  ![](assets/s_ncs_user_import_example06_04.png)\n\nApply the following steps:\n\n1. Choosing a template\n\n   Apply the procedure in example 2 above.\n\n1. File to import\n\n   Select the file that you want to import.\n\n1. Associating fields\n\n   Apply the procedure in example 2 above.\n\n   In the preview of the first lines of the file, you can see that the file contains updates for certain records.\n\n1. Reconciliation\n\n    * Go to the table and select the **[!UICONTROL Update]** operation.\n    * Select the option **[!UICONTROL Reject entity]** for the **[!UICONTROL Management of doubles]** field.\n    * Keep the option **[!UICONTROL Management of duplicates]** in **[!UICONTROL Update]** mode so that existing records in the database will be modified with data from the text file.\n    * Place the cursor on the **[!UICONTROL Last name (@lastName)]** node and select the **[!UICONTROL Update only if destination is empty]** option.\n    * Repeat this operation for the **[!UICONTROL Company (@company)]** node.\n    * Assign a reconciliation key to the fields **[!UICONTROL Birth date]**, **[!UICONTROL Email]** and **[!UICONTROL First name]**.\n    \n      ![](assets/s_ncs_user_import_example04_03.png)\n\n1. Launching the import\n\n   Click **[!UICONTROL Start]**.\n\n   Look in the recipient table to check that the records have been modified by the import.\n\n   ![](assets/s_ncs_user_import_example06_05.png)\n\n   Only values that were empty have been replaced by values from the text file, but the existing value in the database has not been overwritten by the value from the import file.\n\n## Update and enrich the values from those in an external file {#example--update-and-enrich-the-values-from-those-in-an-external-file}\n\nWe want to modify certain fields in a database table from a text file, giving priority to the values contained in the text file.\n\nIn this example, you will see that certain fields in your text file have an empty value, while the corresponding fields in the database are not empty. Other fields contain a different value from the one in the database.\n\n* Content of the text file to import.\n\n  ![](assets/s_ncs_user_import_example02_04.png)\n\n* Database status before import\n\n  ![](assets/s_ncs_user_import_example06_07.png)\n\n1. Choosing a template\n\n   Apply the procedure in example 2 above.\n\n1. File to import\n\n   Select the file that you want to import.\n\n   In the preview of the first lines of the file, you can see that the file contains empty fields and updates for certain records.\n\n1. Associating fields\n\n   Apply the procedure in example 2 above.\n\n1. Reconciliation\n\n    * Go to the table and select **[!UICONTROL Update]**.\n    * Select the option **[!UICONTROL Reject entity]** for the **[!UICONTROL Management of doubles]** field.\n    * Leave the option **[!UICONTROL Management of duplicates]** in **[!UICONTROL Update]** mode for existing records in the database to be modified with data from the text file.\n    * Place the cursor on the **[!UICONTROL Account number (@account)]** node and select the option **[!UICONTROL Take empty values into account]**.\n    * Select the fields **[!UICONTROL Birth date]**, **[!UICONTROL Email]** and **[!UICONTROL First name]** and assign a reconciliation key to them. \n    \n      ![](assets/s_ncs_user_import_example04_04.png)\n\n1. Launching the import\n\n    * Click **[!UICONTROL Start]**. \n    * Look in the recipient table to check that the records have been modified by the operation.\n    \n      ![](assets/s_ncs_user_import_example06_06.png)\n\n      The values of the text file which were empty have overwritten those in the database. The existing values in the database were updated with those in the import file in keeping with the **[!UICONTROL Update]** option selected for duplicates in step 4.\n",
+    "headers": [
+        [
+            "title",
+            "Generic import samples"
+        ],
+        [
+            "description",
+            "Learn more about generic imports you can perform using import jobs"
+        ],
+        [
+            "feature",
+            "Data Management"
+        ],
+        [
+            "topic-tags",
+            "importing-and-exporting-data"
+        ]
+    ],
+    "sections": [
+        {
+            "section": "Generic import samples",
+            "sectionId": "ac8624da-aca0-400a-86b2-ffebab5c8955",
+            "paragraphs": []
+        },
+        {
+            "section": "Import from a list of recipients",
+            "sectionId": "9d8c467d-4544-4117-965e-d30a762c7710",
+            "paragraphs": [
+                "To create and supply a list of recipients from the overview of lists, apply the following steps:",
+                "Creating the list",
+                "Click the Lists link in the Profiles and targets menu of the Adobe Campaign home page.\nClick the Create and then the Import a list button.",
+                "Selecting the file to import",
+                "Click the folder to the right of the Local file field and select the file containing the list to import.",
+                "List name and storage",
+                "Input the name of the list and select the directory where it should be saved.",
+                "Launching the import",
+                "Click Next and then Start to start importing the list."
+            ]
+        },
+        {
+            "section": "Import new records from a text file",
+            "sectionId": "531f449f-c0be-46e7-93ed-f6e95d562b77",
+            "paragraphs": [
+                "To import new recipient profiles stored in a text file into the Adobe Campaign database, apply the following steps:",
+                "Choosing a template",
+                "From the Adobe Campaign home page, click the Profiles and targets link, then Jobs. Above the list of jobs, click New import.\nKeep the New text import template selected by default.\nChange the label and the description.\nSelect Simple import.\nKeep the default job folder.\nClick Advanced parameters and select the Tracking mode option to view the details of your import during execution.",
+                "Selecting the file to import",
+                "Click the folder to the right of the Local file field and select the file you want to import.",
+                "Associating fields",
+                "Click the Guess the destination fields icon to map the source and destination schemas automatically. Check the information in this window before clicking Next.",
+                "Reconciliation",
+                "Go to the Recipients (nms:recipient) table.",
+                "Select the Insertion operation and leave the default values in the other fields.",
+                "Importing recipients",
+                "If necessary, specify a folder for your records to be imported into.",
+                "Launching the import",
+                "Click Start.",
+                "In the central area of the editor, you can check that the import operation has succeeded and view the number of records processed.",
+                "The Tracking mode lets you track the details of the import for each record in the source file. To do this, from the home page click Profiles and Targets then Processes, select the relevant import, and look up the General, Journal and Rejects tabs.",
+                "Checking import progress",
+                "Process viewing for each record"
+            ]
+        },
+        {
+            "section": "Update and insert recipients",
+            "sectionId": "0f3a3657-5089-4a5e-aee3-9aee327878d3",
+            "paragraphs": [
+                "We want to update existing records in the database and create new ones from a text file. Here is an example of the procedure:",
+                "Choosing a template",
+                "Repeat the steps described in example 2 above.",
+                "File to import",
+                "Select the file that you want to import.",
+                "In our example, the overview of the first lines of the file shows that the file contains updates for three records and the creation of a record.",
+                "Associating fields",
+                "Apply the procedure in example 2 above.",
+                "Reconciliation",
+                "Keep Update or insert selected by default.",
+                "Keep the option Management of duplicates in Update mode so that existing records in the database will be modified with data from the text file.",
+                "Select the fields Birth date, Name and Company and assign a reconciliation key to them.",
+                "Launching the import",
+                "Click Start.",
+                "In the tracking window, you can check that the import has succeeded and view the number of records processed.",
+                "Look in the recipient table to check that the records have been modified by this operation."
+            ]
+        },
+        {
+            "section": "Enrich the values with those of an external file",
+            "sectionId": "c48c1a5e-85ee-40d7-9efb-481ab1eccbee",
+            "paragraphs": [
+                "We want to modify certain fields in a database table from a text file, giving priority to the values contained in the database.",
+                "In this example, you can see that certain fields in your text file have a value, while the corresponding fields in the database are empty. Other fields contain a different value from the one contained in the database.",
+                "Content of the text file to import.",
+                "Database status before import",
+                "Apply the following steps:",
+                "Choosing a template",
+                "Apply the procedure in example 2 above.",
+                "File to import",
+                "Select the file that you want to import.",
+                "Associating fields",
+                "Apply the procedure in example 2 above.",
+                "In the preview of the first lines of the file, you can see that the file contains updates for certain records.",
+                "Reconciliation",
+                "Go to the table and select the Update operation.",
+                "Select the option Reject entity for the Management of doubles field.",
+                "Keep the option Management of duplicates in Update mode so that existing records in the database will be modified with data from the text file.",
+                "Place the cursor on the Last name (@lastName) node and select the Update only if destination is empty option.",
+                "Repeat this operation for the Company (@company) node.",
+                "Assign a reconciliation key to the fields Birth date, Email and First name.",
+                "Launching the import",
+                "Click Start.",
+                "Look in the recipient table to check that the records have been modified by the import.",
+                "Only values that were empty have been replaced by values from the text file, but the existing value in the database has not been overwritten by the value from the import file."
+            ]
+        },
+        {
+            "section": "Update and enrich the values from those in an external file",
+            "sectionId": "ccd1d7bb-f062-4452-aded-da80e9233e8b",
+            "paragraphs": [
+                "We want to modify certain fields in a database table from a text file, giving priority to the values contained in the text file.",
+                "In this example, you will see that certain fields in your text file have an empty value, while the corresponding fields in the database are not empty. Other fields contain a different value from the one in the database.",
+                "Content of the text file to import.",
+                "Database status before import",
+                "Choosing a template",
+                "Apply the procedure in example 2 above.",
+                "File to import",
+                "Select the file that you want to import.",
+                "In the preview of the first lines of the file, you can see that the file contains empty fields and updates for certain records.",
+                "Associating fields",
+                "Apply the procedure in example 2 above.",
+                "Reconciliation",
+                "Go to the table and select Update.",
+                "Select the option Reject entity for the Management of doubles field.",
+                "Leave the option Management of duplicates in Update mode for existing records in the database to be modified with data from the text file.",
+                "Place the cursor on the Account number (@account) node and select the option Take empty values into account.",
+                "Select the fields Birth date, Email and First name and assign a reconciliation key to them.",
+                "Launching the import",
+                "Click Start.",
+                "Look in the recipient table to check that the records have been modified by the operation.",
+                "The values of the text file which were empty have overwritten those in the database. The existing values in the database were updated with those in the import file in keeping with the Update option selected for duplicates in step 4."
+            ]
+        }
+    ]
+}

@@ -1,0 +1,33 @@
+{
+    "guid": "fd099374-3bb1-491f-b131-6c9cc6a8c62d",
+    "title": "About workflow activities",
+    "path": "help\\workflow\\using\\about-activities.md",
+    "fullText": "---\nproduct: campaign\ntitle: About workflow activities\ndescription: About activities\nfeature: Workflows, Data Management\nexl-id: 900dd30e-d4fb-452a-af3f-ae00758b0077\n---\n# Workflow activities{#wf-activities}\n\n\n\nThis section describes all of the available activities. According to the node or the context in which the workflow is created/edited, the activities available may vary. For example, the workflows created in a campaign have channel-specific delivery activities.\n\nWorkflow activities are grouped by category. There are four tabs available at the same time.\n\nIn the campaign workflows, the **[!UICONTROL Events]** tab is replaced by the **[!UICONTROL Deliveries]** tab. The activities in this tab are detailed in the [Action activities](about-action-activities.md) section.\n\n![](assets/wf-activity-tabs.png)\n\nRead more:\n\n* [About Targeting activities](about-targeting-activities.md)\n* [Executing a workflow](starting-a-workflow.md)\n* [Workflow best practices](workflow-best-practices.md)\n",
+    "headers": [
+        [
+            "title",
+            "About workflow activities"
+        ],
+        [
+            "description",
+            "About activities"
+        ],
+        [
+            "feature",
+            "Workflows, Data Management"
+        ]
+    ],
+    "sections": [
+        {
+            "section": "Workflow activities",
+            "sectionId": "87a41226-7756-42d4-a616-64c8a5bcbc6d",
+            "paragraphs": [
+                "This section describes all of the available activities. According to the node or the context in which the workflow is created/edited, the activities available may vary. For example, the workflows created in a campaign have channel-specific delivery activities.",
+                "Workflow activities are grouped by category. There are four tabs available at the same time.",
+                "In the campaign workflows, the Events tab is replaced by the Deliveries tab. The activities in this tab are detailed in the Action activities section.",
+                "Read more:",
+                "About Targeting activities\nExecuting a workflow\nWorkflow best practices"
+            ]
+        }
+    ]
+}

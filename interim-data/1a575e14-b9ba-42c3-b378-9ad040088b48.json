@@ -1,0 +1,76 @@
+{
+    "guid": "1a575e14-b9ba-42c3-b378-9ad040088b48",
+    "title": "Schema elements and attributes - methods element",
+    "path": "help\\configuration\\using\\schema\\methods.md",
+    "fullText": "---\nproduct: campaign\ntitle: Schema elements and attributes - methods element\ndescription: method element\nfeature: Schema Extension\nexl-id: f45e32ce-6534-4df2-ac7c-ba1134f0ffc8\n---\n# methods element {#methods--element}\n\n![](../../../assets/v7-only.svg)\n\n## Content model {#content-model-11}\n\nmethods:==method\n\n## Attributes {#attributes-11}\n\nNone\n\n## Parents {#parents-11}\n\n`<srcschema>`\n\n## Children {#children-11}\n\nmethod\n\n## Description {#description-11}\n\nThis element lets you define a `<method>`  element. It is mandatory for declaring a method.\n\n## Attribute description {#attribute-description-11}\n\nThis element has no attributes.\n\n## Examples {#examples-8}\n\n```\n<methods async=\"true\"\n...// definition of one or more <method\n</methods>\n```\n",
+    "headers": [
+        [
+            "title",
+            "Schema elements and attributes - methods element"
+        ],
+        [
+            "description",
+            "method element"
+        ],
+        [
+            "feature",
+            "Schema Extension"
+        ]
+    ],
+    "sections": [
+        {
+            "section": "methods element",
+            "sectionId": "8caf251f-2542-4ea8-8a55-42a208a051ec",
+            "paragraphs": []
+        },
+        {
+            "section": "Content model",
+            "sectionId": "3d168bf6-949f-4dd7-b5eb-787831f93d5e",
+            "paragraphs": [
+                "methods:==method"
+            ]
+        },
+        {
+            "section": "Attributes",
+            "sectionId": "3bedc807-601e-4629-ac0c-45b0037821c1",
+            "paragraphs": [
+                "None"
+            ]
+        },
+        {
+            "section": "Parents",
+            "sectionId": "80227c46-db9c-462a-81d0-1d24cad3a11c",
+            "paragraphs": [
+                "<srcschema>"
+            ]
+        },
+        {
+            "section": "Children",
+            "sectionId": "797295c9-a72e-4873-9eba-6afa4db0251a",
+            "paragraphs": [
+                "method"
+            ]
+        },
+        {
+            "section": "Description",
+            "sectionId": "00c20278-ba73-4473-964e-21042648955b",
+            "paragraphs": [
+                "This element lets you define a <method>  element. It is mandatory for declaring a method."
+            ]
+        },
+        {
+            "section": "Attribute description",
+            "sectionId": "f8411d87-1f60-4c2c-ad3a-c5cb258e4739",
+            "paragraphs": [
+                "This element has no attributes."
+            ]
+        },
+        {
+            "section": "Examples",
+            "sectionId": "83e2ed59-8cfc-4ec0-85d6-68a72d6afd27",
+            "paragraphs": [
+                "<methods async=\"true\"\n...// definition of one or more <method\n</methods>"
+            ]
+        }
+    ]
+}
