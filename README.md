@@ -60,13 +60,13 @@ Run the script to vectorize and store the documentation in MongoDB:
 
 bash
 Copy code
-python vectorize_docs.py
+python acc*doc_load*.py
 Usage
 Run the main application to answer user queries:
 
 bash
 Copy code
-python query_docs.py
+python main.py
 Input your question when prompted, and the application will return an answer based on the Adobe Campaign Classic documentation.
 
 Contributing
