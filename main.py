@@ -31,59 +31,59 @@ def sendQuery(query):
   model = 'nomic-embed-text'
  )
 # creating the pipeline or "query"
-#  pipeline = [{
-#   "$vectorSearch": {
-#     "exact": False,
-#     "index": "vector_index",
-#     "limit": 3,
-#     "numCandidates": 4400,
-#     "path": "embedding",
-#     "queryVector": res["embedding"]
-#    }
-#   },      
-#     {
-#      "$project": {
-#        "_id": 0, 
-#        "plot": 1, 
-#        "title": 1,
-#        "page_content":1,
-#        "score": {
-#          '$meta': 'vectorSearchScore'
-#         }
-#        }
-#     }  
-#  ]
  pipeline = [{
-    "$search": {
-      "index": "default",
-      "text": {
-        "query": initial_question,
-        "path": {
-          "wildcard": "*"
-        }
-      }
-    }
+  "$vectorSearch": {
+    "exact": False,
+    "index": "vector_index",
+    "limit": 3,
+    "numCandidates": 4400,
+    "path": "embedding",
+    "queryVector": res["embedding"]
+   }
   },      
     {
      "$project": {
        "_id": 0, 
+       "plot": 1, 
        "title": 1,
        "page_content":1,
        "score": {
          '$meta': 'vectorSearchScore'
         }
        }
-    },
-    {
-      "$limit":5
-    }
-]
+    }  
+ ]
+#  pipeline = [{
+#     "$search": {
+#       "index": "default",
+#       "text": {
+#         "query": initial_question,
+#         "path": {
+#           "wildcard": "*"
+#         }
+#       }
+#     }
+#   },      
+#     {
+#      "$project": {
+#        "_id": 0, 
+#        "title": 1,
+#        "page_content":1,
+#        "score": {
+#          '$meta': 'vectorSearchScore'
+#         }
+#        }
+#     },
+#     {
+#       "$limit":5
+#     }
+# ]
  result = myclient['RAG_AI_APPLICATION']['ACC_DOC'].aggregate(pipeline=pipeline)
 
  text_arr=''
  response_arr =[]
  counter = 0
- 
+
  for i in result:
   response_arr.append(i)
   text_arr = text_arr + str(i['page_content'])
